@@ -1,3 +1,6 @@
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import { Navbar } from "@/components/layout/navbar";
 import { Sidebar } from "@/components/layout/sidebar";
@@ -10,7 +13,13 @@ import {
   notes,
 } from "@/constants/mock-data";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <DashboardLayout
       navbar={<Navbar />}
