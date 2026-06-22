@@ -1,16 +1,17 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
+import { getNotes } from "@/actions/note-actions";
+
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import { Navbar } from "@/components/layout/navbar";
 import { Sidebar } from "@/components/layout/sidebar";
 
 import { FolderList } from "@/components/folders/folder-list";
 import { NotesGrid } from "@/components/notes/notes-grid";
+import { CreateNoteForm } from "@/components/notes/create-note-form";
 
 import { folders } from "@/constants/mock-data";
-
-import { getNotes } from "@/actions/note-actions";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -27,6 +28,8 @@ export default async function DashboardPage() {
       sidebar={<Sidebar />}
     >
       <FolderList folders={folders} />
+
+      <CreateNoteForm />
 
       <NotesGrid notes={notes} />
     </DashboardLayout>
