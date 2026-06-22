@@ -9,3 +9,19 @@ export async function getNotes() {
     },
   });
 }
+
+export async function createNote(
+  title: string,
+  content: string,
+  userId: string,
+  folderId: string
+) {
+  return await prisma.note.create({
+    data: {
+      title,
+      content,
+      userId,
+      folderId,
+    },
+  });
+}
