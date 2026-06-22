@@ -1,0 +1,63 @@
+"use client";
+
+import { createNote } from "@/actions/note-actions";
+import { useState } from "react";
+
+export function CreateNoteForm() {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
+    e.preventDefault();
+
+    await createNote(
+      title,
+      content,
+      "demo-user-id",
+      "demo-folder-id"
+    );
+
+    setTitle("");
+    setContent("");
+
+    location.reload();
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="mb-6 rounded-lg border p-4"
+    >
+      <h2 className="mb-4 text-lg font-semibold">
+        Create Note
+      </h2>
+
+      <input
+        className="mb-3 w-full rounded border p-2"
+        placeholder="Title"
+        value={title}
+        onChange={(e) =>
+          setTitle(e.target.value)
+        }
+      />
+
+      <textarea
+        className="mb-3 w-full rounded border p-2"
+        placeholder="Content"
+        value={content}
+        onChange={(e) =>
+          setContent(e.target.value)
+        }
+      />
+
+      <button
+        type="submit"
+        className="rounded bg-black px-4 py-2 text-white"
+      >
+        Create
+      </button>
+    </form>
+  );
+}
