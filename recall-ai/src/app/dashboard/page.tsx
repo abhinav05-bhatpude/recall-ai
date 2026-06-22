@@ -8,10 +8,9 @@ import { Sidebar } from "@/components/layout/sidebar";
 import { FolderList } from "@/components/folders/folder-list";
 import { NotesGrid } from "@/components/notes/notes-grid";
 
-import {
-  folders,
-  notes,
-} from "@/constants/mock-data";
+import { folders } from "@/constants/mock-data";
+
+import { getNotes } from "@/actions/note-actions";
 
 export default async function DashboardPage() {
   const session = await auth();
@@ -19,6 +18,8 @@ export default async function DashboardPage() {
   if (!session) {
     redirect("/login");
   }
+
+  const notes = await getNotes();
 
   return (
     <DashboardLayout
