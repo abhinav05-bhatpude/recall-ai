@@ -1,7 +1,7 @@
 "use client";
 
-import { createNote } from "@/actions/note-actions";
 import { useState } from "react";
+import { createNote } from "@/actions/note-actions";
 
 export function CreateNoteForm() {
   const [title, setTitle] = useState("");
@@ -14,9 +14,7 @@ export function CreateNoteForm() {
 
     await createNote(
       title,
-      content,
-      "demo-user-id",
-      "demo-folder-id"
+      content
     );
 
     setTitle("");
@@ -56,7 +54,7 @@ export function CreateNoteForm() {
         type="submit"
         className="rounded bg-black px-4 py-2 text-white"
       >
-        Create
+        Create Note
       </button>
     </form>
   );
