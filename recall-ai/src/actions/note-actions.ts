@@ -80,3 +80,54 @@ export async function createNote(
 
   return note;
 }
+
+export async function updateNote(
+  noteId: string,
+  title: string,
+  content: string
+) {
+  const session = await auth();
+
+  if (!session?.user?.email) {
+    throw new Error("Unauthorized");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+  });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const note = await prisma.note.findUnique({
+    where: {
+      id: noteId,
+    },
+  });
+
+  if (!note) {
+    throw new Error("Note not found");
+  }
+
+  if (note.userId !== user.id) {
+    throw new Error("Forbidden");
+  }
+
+  const updatedNote =
+    await prisma.note.update({
+      where: {
+        id: noteId,
+      },
+      data: {
+        title,
+        content,
+      },
+    });
+
+  revalidatePath("/dashboard");
+
+  return updatedNote;
+}
