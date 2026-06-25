@@ -22,8 +22,7 @@ export function NotesGrid({
         </h2>
 
         <p className="mt-2 text-sm text-gray-500">
-          Create your first note to get
-          started.
+          Create your first note to get started.
         </p>
       </div>
     );
@@ -39,6 +38,7 @@ export function NotesGrid({
         {notes.map((note) => (
           <NoteCard
             key={note.id}
+            id={note.id}
             title={note.title}
             content={note.content}
             createdAt={note.createdAt}

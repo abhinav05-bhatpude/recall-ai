@@ -1,10 +1,12 @@
 interface NoteCardProps {
+  id: string;
   title: string;
   content: string;
   createdAt?: Date;
 }
 
 export function NoteCard({
+  id,
   title,
   content,
   createdAt,
@@ -17,9 +19,10 @@ export function NoteCard({
         </h3>
 
         <button
+          data-note-id={id}
           className="text-sm text-blue-600 hover:text-blue-800"
         >
-          ✏️ Edit
+          Edit
         </button>
       </div>
 
