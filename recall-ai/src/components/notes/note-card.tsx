@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { EditNoteForm } from "./edit-note-form";
+import { deleteNote } from "@/actions/note-actions";
 
 interface NoteCardProps {
   id: string;
@@ -17,8 +19,36 @@ export function NoteCard({
   content,
   createdAt,
 }: NoteCardProps) {
+  const router = useRouter();
+
   const [editing, setEditing] =
     useState(false);
+
+  const [deleting, setDeleting] =
+    useState(false);
+
+  async function handleDelete() {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this note?"
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      setDeleting(true);
+
+      await deleteNote(id);
+
+      router.refresh();
+    } catch (error) {
+      console.error(error);
+      alert("Failed to delete note.");
+    } finally {
+      setDeleting(false);
+    }
+  }
 
   if (editing) {
     return (
@@ -26,7 +56,9 @@ export function NoteCard({
         id={id}
         initialTitle={title}
         initialContent={content}
-        onCancel={() => setEditing(false)}
+        onCancel={() =>
+          setEditing(false)
+        }
       />
     );
   }
@@ -38,12 +70,26 @@ export function NoteCard({
           {title}
         </h3>
 
-        <button
-          onClick={() => setEditing(true)}
-          className="text-sm text-blue-600 hover:text-blue-800"
-        >
-          Edit
-        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={() =>
+              setEditing(true)
+            }
+            className="text-sm text-blue-600 hover:text-blue-800"
+          >
+            Edit
+          </button>
+
+          <button
+            onClick={handleDelete}
+            disabled={deleting}
+            className="text-sm text-red-600 hover:text-red-800 disabled:opacity-50"
+          >
+            {deleting
+              ? "Deleting..."
+              : "Delete"}
+          </button>
+        </div>
       </div>
 
       <p className="mb-3 text-sm text-gray-600">
