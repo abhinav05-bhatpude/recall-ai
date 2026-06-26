@@ -131,3 +131,45 @@ export async function updateNote(
 
   return updatedNote;
 }
+
+export async function deleteNote(
+  noteId: string
+) {
+  const session = await auth();
+
+  if (!session?.user?.email) {
+    throw new Error("Unauthorized");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+  });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const note = await prisma.note.findUnique({
+    where: {
+      id: noteId,
+    },
+  });
+
+  if (!note) {
+    throw new Error("Note not found");
+  }
+
+  if (note.userId !== user.id) {
+    throw new Error("Forbidden");
+  }
+
+  await prisma.note.delete({
+    where: {
+      id: noteId,
+    },
+  });
+
+  revalidatePath("/dashboard");
+}
