@@ -64,7 +64,7 @@ export function NoteCard({
   }
 
   return (
-    <div className="rounded-lg border p-4 shadow-sm">
+    <div className="rounded-lg border bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
       <div className="mb-2 flex items-center justify-between">
         <h3 className="font-semibold">
           {title}
@@ -75,7 +75,8 @@ export function NoteCard({
             onClick={() =>
               setEditing(true)
             }
-            className="text-sm text-blue-600 hover:text-blue-800"
+            disabled={deleting}
+            className="rounded px-2 py-1 text-sm text-blue-600 transition hover:bg-blue-50 hover:text-blue-800 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Edit
           </button>
@@ -83,7 +84,7 @@ export function NoteCard({
           <button
             onClick={handleDelete}
             disabled={deleting}
-            className="text-sm text-red-600 hover:text-red-800 disabled:opacity-50"
+            className="rounded px-2 py-1 text-sm text-red-600 transition hover:bg-red-50 hover:text-red-800 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {deleting
               ? "Deleting..."
