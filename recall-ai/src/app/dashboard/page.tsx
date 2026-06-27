@@ -11,8 +11,6 @@ import { Navbar } from "@/components/layout/navbar";
 import { Sidebar } from "@/components/layout/sidebar";
 
 import { FolderList } from "@/components/folders/folder-list";
-import { CreateFolderForm } from "@/components/folders/create-folder-form";
-
 import { NotesGrid } from "@/components/notes/notes-grid";
 import { CreateNoteForm } from "@/components/notes/create-note-form";
 
@@ -24,20 +22,16 @@ export default async function DashboardPage() {
   }
 
   const notes = await getNotes();
-
-  const folders =
-    await getFolders();
+  const folders = await getFolders();
 
   return (
     <DashboardLayout
       navbar={<Navbar />}
       sidebar={<Sidebar />}
     >
-      <CreateFolderForm />
-
       <FolderList folders={folders} />
 
-      <CreateNoteForm />
+      <CreateNoteForm folders={folders} />
 
       <NotesGrid notes={notes} />
     </DashboardLayout>

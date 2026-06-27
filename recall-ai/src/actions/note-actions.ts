@@ -33,7 +33,8 @@ export async function getNotes() {
 
 export async function createNote(
   title: string,
-  content: string
+  content: string,
+  folderId: string
 ) {
   const session = await auth();
 
@@ -45,9 +46,6 @@ export async function createNote(
     where: {
       email: session.user.email,
     },
-    include: {
-      folders: true,
-    },
   });
 
   if (!user) {
@@ -56,23 +54,12 @@ export async function createNote(
     );
   }
 
-  let folder = user.folders[0];
-
-  if (!folder) {
-    folder = await prisma.folder.create({
-      data: {
-        name: "My Notes",
-        userId: user.id,
-      },
-    });
-  }
-
   const note = await prisma.note.create({
     data: {
       title,
       content,
       userId: user.id,
-      folderId: folder.id,
+      folderId,
     },
   });
 
@@ -205,6 +192,7 @@ export async function createFolder(
 
   return folder;
 }
+
 export async function getFolders() {
   const session = await auth();
 

@@ -3,9 +3,23 @@
 import { useState } from "react";
 import { createNote } from "@/actions/note-actions";
 
-export function CreateNoteForm() {
+interface Folder {
+  id: string;
+  name: string;
+}
+
+interface CreateNoteFormProps {
+  folders: Folder[];
+}
+
+export function CreateNoteForm({
+  folders,
+}: CreateNoteFormProps) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [folderId, setFolderId] = useState(
+    folders[0]?.id ?? ""
+  );
 
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
@@ -14,7 +28,8 @@ export function CreateNoteForm() {
 
     await createNote(
       title,
-      content
+      content,
+      folderId
     );
 
     setTitle("");
@@ -49,6 +64,23 @@ export function CreateNoteForm() {
           setContent(e.target.value)
         }
       />
+
+      <select
+        className="mb-3 w-full rounded border p-2"
+        value={folderId}
+        onChange={(e) =>
+          setFolderId(e.target.value)
+        }
+      >
+        {folders.map((folder) => (
+          <option
+            key={folder.id}
+            value={folder.id}
+          >
+            {folder.name}
+          </option>
+        ))}
+      </select>
 
       <button
         type="submit"
