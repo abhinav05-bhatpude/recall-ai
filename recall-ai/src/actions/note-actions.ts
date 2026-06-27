@@ -173,3 +173,35 @@ export async function deleteNote(
 
   revalidatePath("/dashboard");
 }
+
+export async function createFolder(
+  name: string
+) {
+  const session = await auth();
+
+  if (!session?.user?.email) {
+    throw new Error("Unauthorized");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+  });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const folder =
+    await prisma.folder.create({
+      data: {
+        name,
+        userId: user.id,
+      },
+    });
+
+  revalidatePath("/dashboard");
+
+  return folder;
+}
