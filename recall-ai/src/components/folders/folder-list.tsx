@@ -1,5 +1,9 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 interface Folder {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -10,20 +14,36 @@ interface FolderListProps {
 export function FolderList({
   folders,
 }: FolderListProps) {
+  const router = useRouter();
+
   return (
     <div className="mb-8">
       <h2 className="mb-4 text-xl font-semibold">
         Folders
       </h2>
 
+      <button
+        onClick={() =>
+          router.push("/dashboard")
+        }
+        className="mb-2 block w-full rounded-lg border p-3 text-left hover:bg-gray-50"
+      >
+        📂 All Notes
+      </button>
+
       <div className="space-y-2">
         {folders.map((folder) => (
-          <div
+          <button
             key={folder.id}
-            className="rounded-lg border p-3 hover:bg-gray-50"
+            onClick={() =>
+              router.push(
+                `/dashboard?folder=${folder.id}`
+              )
+            }
+            className="block w-full rounded-lg border p-3 text-left hover:bg-gray-50"
           >
             📁 {folder.name}
-          </div>
+          </button>
         ))}
       </div>
     </div>

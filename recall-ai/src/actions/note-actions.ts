@@ -4,7 +4,9 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
 
-export async function getNotes() {
+export async function getNotes(
+  folderId?: string
+) {
   const session = await auth();
 
   if (!session?.user?.email) {
@@ -24,6 +26,9 @@ export async function getNotes() {
   return await prisma.note.findMany({
     where: {
       userId: user.id,
+      ...(folderId && {
+        folderId,
+      }),
     },
     orderBy: {
       createdAt: "desc",
