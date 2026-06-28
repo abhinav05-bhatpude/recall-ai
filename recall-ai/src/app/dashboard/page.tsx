@@ -12,6 +12,7 @@ import { Sidebar } from "@/components/layout/sidebar";
 
 import { FolderList } from "@/components/folders/folder-list";
 import { NotesGrid } from "@/components/notes/notes-grid";
+import { SearchBar } from "@/components/search/search-bar";
 import { CreateNoteForm } from "@/components/notes/create-note-form";
 
 interface DashboardPageProps {
@@ -42,6 +43,8 @@ export default async function DashboardPage({
       <FolderList
         folders={folders}
       />
+
+      <SearchBar/>
 
       <CreateNoteForm
         folders={folders}
