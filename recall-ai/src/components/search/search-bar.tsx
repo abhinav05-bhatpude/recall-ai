@@ -9,6 +9,7 @@ import { useState } from "react";
 
 export function SearchBar() {
   const router = useRouter();
+
   const searchParams =
     useSearchParams();
 
@@ -41,6 +42,21 @@ export function SearchBar() {
     );
   }
 
+  function clearSearch() {
+    setSearch("");
+
+    const params =
+      new URLSearchParams(
+        searchParams.toString()
+      );
+
+    params.delete("search");
+
+    router.push(
+      `/dashboard?${params.toString()}`
+    );
+  }
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -61,6 +77,14 @@ export function SearchBar() {
         className="rounded-lg bg-black px-5 text-white"
       >
         Search
+      </button>
+
+      <button
+        type="button"
+        onClick={clearSearch}
+        className="rounded-lg border px-5"
+      >
+        Clear
       </button>
     </form>
   );
