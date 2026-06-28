@@ -51,7 +51,9 @@ export default async function DashboardPage({
         folders={folders}
       />
 
-      <NotesGrid notes={notes} />
+      <NotesGrid notes={notes}
+      search={search}
+       />
     </DashboardLayout>
   );
 }
