@@ -18,6 +18,7 @@ import { CreateNoteForm } from "@/components/notes/create-note-form";
 interface DashboardPageProps {
   searchParams: Promise<{
     folder?: string;
+    search?:string;
   }>;
 }
 
@@ -30,10 +31,10 @@ export default async function DashboardPage({
     redirect("/login");
   }
 
-  const { folder } = await searchParams;
+  const { folder,search } = await searchParams;
 
   const folders = await getFolders();
-  const notes = await getNotes(folder);
+  const notes = await getNotes(folder,search);
 
   return (
     <DashboardLayout

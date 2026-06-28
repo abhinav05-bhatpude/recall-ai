@@ -5,7 +5,8 @@ import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
 
 export async function getNotes(
-  folderId?: string
+  folderId?: string,
+  search?: string
 ) {
   const session = await auth();
 
@@ -26,10 +27,29 @@ export async function getNotes(
   return await prisma.note.findMany({
     where: {
       userId: user.id,
+
       ...(folderId && {
         folderId,
       }),
+
+      ...(search && {
+        OR: [
+          {
+            title: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+          {
+            content: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+        ],
+      }),
     },
+
     orderBy: {
       createdAt: "desc",
     },
