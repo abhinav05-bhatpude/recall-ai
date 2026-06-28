@@ -12,13 +12,15 @@ import { Sidebar } from "@/components/layout/sidebar";
 
 import { FolderList } from "@/components/folders/folder-list";
 import { NotesGrid } from "@/components/notes/notes-grid";
-import { SearchBar } from "@/components/search/search-bar";
 import { CreateNoteForm } from "@/components/notes/create-note-form";
+
+import { SearchBar } from "@/components/search/search-bar";
+import { SearchInfo } from "@/components/search/search-info";
 
 interface DashboardPageProps {
   searchParams: Promise<{
     folder?: string;
-    search?:string;
+    search?: string;
   }>;
 }
 
@@ -31,29 +33,45 @@ export default async function DashboardPage({
     redirect("/login");
   }
 
-  const { folder,search } = await searchParams;
+  const {
+    folder,
+    search,
+  } = await searchParams;
 
   const folders = await getFolders();
-  const notes = await getNotes(folder,search);
+
+  const notes = await getNotes(
+    folder,
+    search
+  );
+
+  const selectedFolder =
+    folders.find(
+      (f) => f.id === folder
+    );
 
   return (
     <DashboardLayout
       navbar={<Navbar />}
       sidebar={<Sidebar />}
     >
-      <FolderList
-        folders={folders}
-      />
+      <FolderList folders={folders} />
 
-      <SearchBar/>
+      <SearchBar />
 
       <CreateNoteForm
         folders={folders}
       />
 
-      <NotesGrid notes={notes}
-      search={search}
-       />
+      <SearchInfo
+        search={search}
+        folderName={selectedFolder?.name}
+      />
+
+      <NotesGrid
+        notes={notes}
+        search={search}
+      />
     </DashboardLayout>
   );
 }
