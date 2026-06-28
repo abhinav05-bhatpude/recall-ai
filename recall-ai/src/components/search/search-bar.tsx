@@ -5,21 +5,33 @@ import {
   useSearchParams,
 } from "next/navigation";
 
+import { useState } from "react";
+
 export function SearchBar() {
   const router = useRouter();
   const searchParams =
     useSearchParams();
 
-  function handleSearch(
-    value: string
+  const [search, setSearch] =
+    useState(
+      searchParams.get("search") ?? ""
+    );
+
+  function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
   ) {
+    e.preventDefault();
+
     const params =
       new URLSearchParams(
         searchParams.toString()
       );
 
-    if (value) {
-      params.set("search", value);
+    if (search.trim()) {
+      params.set(
+        "search",
+        search.trim()
+      );
     } else {
       params.delete("search");
     }
@@ -30,18 +42,26 @@ export function SearchBar() {
   }
 
   return (
-    <div className="mb-6">
+    <form
+      onSubmit={handleSubmit}
+      className="mb-6 flex gap-2"
+    >
       <input
         type="text"
         placeholder="Search notes..."
-        defaultValue={
-          searchParams.get("search") ?? ""
-        }
+        value={search}
         onChange={(e) =>
-          handleSearch(e.target.value)
+          setSearch(e.target.value)
         }
-        className="w-full rounded-lg border p-3 outline-none focus:ring-2 focus:ring-black"
+        className="flex-1 rounded-lg border p-3 outline-none focus:ring-2 focus:ring-black"
       />
-    </div>
+
+      <button
+        type="submit"
+        className="rounded-lg bg-black px-5 text-white"
+      >
+        Search
+      </button>
+    </form>
   );
 }
