@@ -74,9 +74,9 @@ export function NoteCard({
   }
 
   return (
-    <div className="rounded-lg border p-4 shadow-sm">
-      <div className="mb-2 flex items-center justify-between">
-        <h3 className="font-semibold">
+    <div className="rounded-xl border bg-white p-5 shadow-sm transition hover:shadow-md">
+      <div className="mb-3 flex items-center justify-between">
+        <h3 className="text-lg font-semibold">
           {title}
         </h3>
 
@@ -85,15 +85,15 @@ export function NoteCard({
         </button>
       </div>
 
-      <p className="mb-4 whitespace-pre-wrap text-sm text-gray-600">
+      <p className="mb-5 whitespace-pre-wrap text-sm leading-7 text-gray-700">
         {content}
       </p>
 
-      <div className="mb-4 flex flex-wrap gap-2">
+      <div className="mb-5 flex flex-wrap gap-2">
         <button
           onClick={handleSummarize}
           disabled={loadingAction !== null}
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-lg border px-3 py-2 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loadingAction === "summary"
             ? "⏳ Summarizing..."
@@ -103,7 +103,7 @@ export function NoteCard({
         <button
           onClick={handleKeyPoints}
           disabled={loadingAction !== null}
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-lg border px-3 py-2 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loadingAction === "points"
             ? "⏳ Generating..."
@@ -113,7 +113,7 @@ export function NoteCard({
         <button
           onClick={handleStudyNotes}
           disabled={loadingAction !== null}
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-lg border px-3 py-2 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loadingAction === "study"
             ? "⏳ Generating..."
@@ -122,43 +122,62 @@ export function NoteCard({
       </div>
 
       {summary && (
-        <div className="mb-4 rounded-lg bg-gray-100 p-3">
-          <h4 className="mb-2 font-semibold">
-            🤖 AI Summary
-          </h4>
+        <div className="mb-4 rounded-xl border border-gray-200 bg-gray-50 p-4 shadow-sm">
+          <div className="mb-3 flex items-center gap-2">
+            <span className="text-lg">
+              🤖
+            </span>
 
-          <p className="whitespace-pre-wrap text-sm">
+            <h4 className="font-semibold">
+              AI Summary
+            </h4>
+          </div>
+
+          <div className="max-h-56 overflow-y-auto whitespace-pre-wrap text-sm leading-7 text-gray-700">
             {summary}
-          </p>
+          </div>
         </div>
       )}
 
       {keyPoints && (
-        <div className="mb-4 rounded-lg bg-blue-50 p-3">
-          <h4 className="mb-2 font-semibold">
-            📝 Key Points
-          </h4>
+        <div className="mb-4 rounded-xl border border-blue-200 bg-blue-50 p-4 shadow-sm">
+          <div className="mb-3 flex items-center gap-2">
+            <span className="text-lg">
+              📝
+            </span>
 
-          <p className="whitespace-pre-wrap text-sm">
+            <h4 className="font-semibold">
+              Key Points
+            </h4>
+          </div>
+
+          <div className="max-h-56 overflow-y-auto whitespace-pre-wrap text-sm leading-7 text-gray-700">
             {keyPoints}
-          </p>
+          </div>
         </div>
       )}
 
       {studyNotes && (
-        <div className="mb-4 rounded-lg bg-green-50 p-3">
-          <h4 className="mb-2 font-semibold">
-            📚 Study Notes
-          </h4>
+        <div className="mb-4 rounded-xl border border-green-200 bg-green-50 p-4 shadow-sm">
+          <div className="mb-3 flex items-center gap-2">
+            <span className="text-lg">
+              📚
+            </span>
 
-          <p className="whitespace-pre-wrap text-sm">
+            <h4 className="font-semibold">
+              Study Notes
+            </h4>
+          </div>
+
+          <div className="max-h-56 overflow-y-auto whitespace-pre-wrap text-sm leading-7 text-gray-700">
             {studyNotes}
-          </p>
+          </div>
         </div>
       )}
 
       {createdAt && (
-        <p className="text-xs text-gray-400">
+        <p className="mt-4 border-t pt-3 text-xs text-gray-400">
+          Created on{" "}
           {new Date(
             createdAt
           ).toLocaleDateString()}
