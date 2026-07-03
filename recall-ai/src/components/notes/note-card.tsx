@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { summarizeNote } from "@/actions/ai-actions";
+import {
+  summarizeNote,
+  generateKeyPoints,
+} from "@/actions/ai-actions";
 
 interface NoteCardProps {
   id: string;
@@ -19,11 +22,17 @@ export function NoteCard({
   const [summary, setSummary] =
     useState("");
 
-  const [loading, setLoading] =
+  const [keyPoints, setKeyPoints] =
+    useState("");
+
+  const [loadingSummary, setLoadingSummary] =
+    useState(false);
+
+  const [loadingKeyPoints, setLoadingKeyPoints] =
     useState(false);
 
   async function handleSummarize() {
-    setLoading(true);
+    setLoadingSummary(true);
 
     try {
       const result =
@@ -31,7 +40,20 @@ export function NoteCard({
 
       setSummary(result);
     } finally {
-      setLoading(false);
+      setLoadingSummary(false);
+    }
+  }
+
+  async function handleKeyPoints() {
+    setLoadingKeyPoints(true);
+
+    try {
+      const result =
+        await generateKeyPoints(content);
+
+      setKeyPoints(result);
+    } finally {
+      setLoadingKeyPoints(false);
     }
   }
 
@@ -54,16 +76,22 @@ export function NoteCard({
       <div className="mb-4 flex flex-wrap gap-2">
         <button
           onClick={handleSummarize}
-          disabled={loading}
+          disabled={loadingSummary}
           className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:opacity-50"
         >
-          {loading
+          {loadingSummary
             ? "Generating..."
             : "✨ Summarize"}
         </button>
 
-        <button className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100">
-          📝 Key Points
+        <button
+          onClick={handleKeyPoints}
+          disabled={loadingKeyPoints}
+          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:opacity-50"
+        >
+          {loadingKeyPoints
+            ? "Generating..."
+            : "📝 Key Points"}
         </button>
 
         <button className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100">
@@ -79,6 +107,18 @@ export function NoteCard({
 
           <p className="whitespace-pre-wrap text-sm">
             {summary}
+          </p>
+        </div>
+      )}
+
+      {keyPoints && (
+        <div className="mb-4 rounded-lg bg-blue-50 p-3">
+          <h4 className="mb-2 font-semibold">
+            Key Points
+          </h4>
+
+          <p className="whitespace-pre-wrap text-sm">
+            {keyPoints}
           </p>
         </div>
       )}
