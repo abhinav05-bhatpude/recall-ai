@@ -9,7 +9,18 @@ export async function summarizeNote(
     await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: `
-Summarize the following note in 5 concise sentences.
+You are an expert study assistant.
+
+Summarize the following note.
+
+Rules:
+- Maximum 5 concise sentences.
+- Keep only the most important information.
+- Use simple English.
+- Do not repeat ideas.
+- Return plain text only.
+
+Note:
 
 ${content}
 `,
@@ -25,9 +36,17 @@ export async function generateKeyPoints(
     await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: `
-Extract the most important key points from this note.
+You are an expert note analyzer.
 
-Return them as bullet points.
+Extract the most important points.
+
+Rules:
+- Return 5-8 bullet points.
+- Each point should be one sentence.
+- Remove unnecessary explanations.
+- Return plain text only.
+
+Note:
 
 ${content}
 `,
@@ -43,13 +62,27 @@ export async function generateStudyNotes(
     await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: `
-Turn this note into easy-to-understand study notes.
+You are an expert teacher.
 
-Include:
+Convert this note into study material.
 
-- Main concepts
-- Important facts
-- Short explanations
+Format:
+
+Overview
+
+Important Concepts
+
+Examples (if applicable)
+
+Quick Revision
+
+Use headings exactly as above.
+
+Keep the explanation beginner friendly.
+
+Return plain text only.
+
+Note:
 
 ${content}
 `,
