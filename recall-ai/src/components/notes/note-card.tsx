@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import { summarizeNote } from "@/actions/ai-actions";
+
 interface NoteCardProps {
   id: string;
   title: string;
@@ -13,6 +16,25 @@ export function NoteCard({
   content,
   createdAt,
 }: NoteCardProps) {
+  const [summary, setSummary] =
+    useState("");
+
+  const [loading, setLoading] =
+    useState(false);
+
+  async function handleSummarize() {
+    setLoading(true);
+
+    try {
+      const result =
+        await summarizeNote(content);
+
+      setSummary(result);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="rounded-lg border p-4 shadow-sm">
       <div className="mb-2 flex items-center justify-between">
@@ -31,27 +53,41 @@ export function NoteCard({
 
       <div className="mb-4 flex flex-wrap gap-2">
         <button
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100"
+          onClick={handleSummarize}
+          disabled={loading}
+          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:opacity-50"
         >
-          ✨ Summarize
+          {loading
+            ? "Generating..."
+            : "✨ Summarize"}
         </button>
 
-        <button
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100"
-        >
+        <button className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100">
           📝 Key Points
         </button>
 
-        <button
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100"
-        >
+        <button className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100">
           📚 Study Notes
         </button>
       </div>
 
+      {summary && (
+        <div className="mb-4 rounded-lg bg-gray-100 p-3">
+          <h4 className="mb-2 font-semibold">
+            AI Summary
+          </h4>
+
+          <p className="whitespace-pre-wrap text-sm">
+            {summary}
+          </p>
+        </div>
+      )}
+
       {createdAt && (
         <p className="text-xs text-gray-400">
-          {new Date(createdAt).toLocaleDateString()}
+          {new Date(
+            createdAt
+          ).toLocaleDateString()}
         </p>
       )}
     </div>
