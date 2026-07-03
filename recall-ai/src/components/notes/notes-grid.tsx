@@ -1,3 +1,5 @@
+import { NoteCard } from "./note-card";
+
 interface Note {
   id: string;
   title: string;
@@ -7,26 +9,20 @@ interface Note {
 
 interface NotesGridProps {
   notes: Note[];
-  search?: string;
 }
 
 export function NotesGrid({
   notes,
-  search,
 }: NotesGridProps) {
   if (notes.length === 0) {
     return (
       <div className="rounded-lg border p-6 text-center">
         <h2 className="text-lg font-semibold">
-          {search
-            ? "No matching notes found"
-            : "No Notes Yet"}
+          No Notes Found
         </h2>
 
         <p className="mt-2 text-sm text-gray-500">
-          {search
-            ? `No notes match "${search}".`
-            : "Create your first note to get started."}
+          Try changing your search or create a new note.
         </p>
       </div>
     );
@@ -42,6 +38,7 @@ export function NotesGrid({
         {notes.map((note) => (
           <NoteCard
             key={note.id}
+            id={note.id}
             title={note.title}
             content={note.content}
             createdAt={note.createdAt}
