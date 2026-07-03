@@ -29,17 +29,13 @@ export function NoteCard({
   const [studyNotes, setStudyNotes] =
     useState("");
 
-  const [loadingSummary, setLoadingSummary] =
-    useState(false);
-
-  const [loadingKeyPoints, setLoadingKeyPoints] =
-    useState(false);
-
-  const [loadingStudyNotes, setLoadingStudyNotes] =
-    useState(false);
+  const [loadingAction, setLoadingAction] =
+    useState<
+      "summary" | "points" | "study" | null
+    >(null);
 
   async function handleSummarize() {
-    setLoadingSummary(true);
+    setLoadingAction("summary");
 
     try {
       const result =
@@ -47,12 +43,12 @@ export function NoteCard({
 
       setSummary(result);
     } finally {
-      setLoadingSummary(false);
+      setLoadingAction(null);
     }
   }
 
   async function handleKeyPoints() {
-    setLoadingKeyPoints(true);
+    setLoadingAction("points");
 
     try {
       const result =
@@ -60,12 +56,12 @@ export function NoteCard({
 
       setKeyPoints(result);
     } finally {
-      setLoadingKeyPoints(false);
+      setLoadingAction(null);
     }
   }
 
   async function handleStudyNotes() {
-    setLoadingStudyNotes(true);
+    setLoadingAction("study");
 
     try {
       const result =
@@ -73,7 +69,7 @@ export function NoteCard({
 
       setStudyNotes(result);
     } finally {
-      setLoadingStudyNotes(false);
+      setLoadingAction(null);
     }
   }
 
@@ -96,31 +92,31 @@ export function NoteCard({
       <div className="mb-4 flex flex-wrap gap-2">
         <button
           onClick={handleSummarize}
-          disabled={loadingSummary}
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:opacity-50"
+          disabled={loadingAction !== null}
+          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {loadingSummary
-            ? "Generating..."
+          {loadingAction === "summary"
+            ? "⏳ Summarizing..."
             : "✨ Summarize"}
         </button>
 
         <button
           onClick={handleKeyPoints}
-          disabled={loadingKeyPoints}
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:opacity-50"
+          disabled={loadingAction !== null}
+          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {loadingKeyPoints
-            ? "Generating..."
+          {loadingAction === "points"
+            ? "⏳ Generating..."
             : "📝 Key Points"}
         </button>
 
         <button
           onClick={handleStudyNotes}
-          disabled={loadingStudyNotes}
-          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:opacity-50"
+          disabled={loadingAction !== null}
+          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {loadingStudyNotes
-            ? "Generating..."
+          {loadingAction === "study"
+            ? "⏳ Generating..."
             : "📚 Study Notes"}
         </button>
       </div>
@@ -128,7 +124,7 @@ export function NoteCard({
       {summary && (
         <div className="mb-4 rounded-lg bg-gray-100 p-3">
           <h4 className="mb-2 font-semibold">
-            AI Summary
+            🤖 AI Summary
           </h4>
 
           <p className="whitespace-pre-wrap text-sm">
@@ -140,7 +136,7 @@ export function NoteCard({
       {keyPoints && (
         <div className="mb-4 rounded-lg bg-blue-50 p-3">
           <h4 className="mb-2 font-semibold">
-            Key Points
+            📝 Key Points
           </h4>
 
           <p className="whitespace-pre-wrap text-sm">
@@ -152,7 +148,7 @@ export function NoteCard({
       {studyNotes && (
         <div className="mb-4 rounded-lg bg-green-50 p-3">
           <h4 className="mb-2 font-semibold">
-            Study Notes
+            📚 Study Notes
           </h4>
 
           <p className="whitespace-pre-wrap text-sm">
