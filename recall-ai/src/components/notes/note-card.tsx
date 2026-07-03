@@ -4,6 +4,7 @@ import { useState } from "react";
 import {
   summarizeNote,
   generateKeyPoints,
+  generateStudyNotes,
 } from "@/actions/ai-actions";
 
 interface NoteCardProps {
@@ -25,10 +26,16 @@ export function NoteCard({
   const [keyPoints, setKeyPoints] =
     useState("");
 
+  const [studyNotes, setStudyNotes] =
+    useState("");
+
   const [loadingSummary, setLoadingSummary] =
     useState(false);
 
   const [loadingKeyPoints, setLoadingKeyPoints] =
+    useState(false);
+
+  const [loadingStudyNotes, setLoadingStudyNotes] =
     useState(false);
 
   async function handleSummarize() {
@@ -54,6 +61,19 @@ export function NoteCard({
       setKeyPoints(result);
     } finally {
       setLoadingKeyPoints(false);
+    }
+  }
+
+  async function handleStudyNotes() {
+    setLoadingStudyNotes(true);
+
+    try {
+      const result =
+        await generateStudyNotes(content);
+
+      setStudyNotes(result);
+    } finally {
+      setLoadingStudyNotes(false);
     }
   }
 
@@ -94,8 +114,14 @@ export function NoteCard({
             : "📝 Key Points"}
         </button>
 
-        <button className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100">
-          📚 Study Notes
+        <button
+          onClick={handleStudyNotes}
+          disabled={loadingStudyNotes}
+          className="rounded-md border px-3 py-1 text-sm transition hover:bg-gray-100 disabled:opacity-50"
+        >
+          {loadingStudyNotes
+            ? "Generating..."
+            : "📚 Study Notes"}
         </button>
       </div>
 
@@ -119,6 +145,18 @@ export function NoteCard({
 
           <p className="whitespace-pre-wrap text-sm">
             {keyPoints}
+          </p>
+        </div>
+      )}
+
+      {studyNotes && (
+        <div className="mb-4 rounded-lg bg-green-50 p-3">
+          <h4 className="mb-2 font-semibold">
+            Study Notes
+          </h4>
+
+          <p className="whitespace-pre-wrap text-sm">
+            {studyNotes}
           </p>
         </div>
       )}
