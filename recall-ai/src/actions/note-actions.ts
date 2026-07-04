@@ -282,7 +282,9 @@ export async function createResource(
   return resource;
 }
 
-export async function getResources() {
+export async function getResources(
+  search?: string
+) {
   const session = await auth();
 
   if (!session?.user?.email) {
@@ -302,7 +304,31 @@ export async function getResources() {
   return await prisma.resource.findMany({
     where: {
       userId: user.id,
+
+      ...(search && {
+        OR: [
+          {
+            title: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+          {
+            description: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+          {
+            type: {
+              contains: search,
+              mode: "insensitive",
+            },
+          },
+        ],
+      }),
     },
+
     orderBy: {
       createdAt: "desc",
     },

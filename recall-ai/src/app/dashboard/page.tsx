@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import {
   getFolders,
   getNotes,
+  getResources,
 } from "@/actions/note-actions";
 
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
@@ -11,7 +12,6 @@ import { Navbar } from "@/components/layout/navbar";
 import { Sidebar } from "@/components/layout/sidebar";
 
 import { DashboardStats } from "@/components/dashboard/dashboard-stats";
-
 import { FolderList } from "@/components/folders/folder-list";
 
 import { SearchBar } from "@/components/search/search-bar";
@@ -21,6 +21,7 @@ import { CreateNoteForm } from "@/components/notes/create-note-form";
 import { NotesGrid } from "@/components/notes/notes-grid";
 
 import { CreateResourceForm } from "@/components/resources/create-resource-form";
+import { ResourceGrid } from "@/components/resources/resource-grid";
 
 interface DashboardPageProps {
   searchParams: Promise<{
@@ -49,6 +50,11 @@ export default async function DashboardPage({
   const notes =
     await getNotes(
       folder,
+      search
+    );
+
+  const resources =
+    await getResources(
       search
     );
 
@@ -90,6 +96,16 @@ export default async function DashboardPage({
         notes={notes}
         search={search}
       />
+
+      <div className="mt-12">
+        <h2 className="mb-6 text-3xl font-bold text-slate-800">
+          📚 Knowledge Hub
+        </h2>
+
+        <ResourceGrid
+          resources={resources}
+        />
+      </div>
     </DashboardLayout>
   );
 }
