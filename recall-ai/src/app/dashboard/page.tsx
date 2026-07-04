@@ -10,6 +10,8 @@ import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import { Navbar } from "@/components/layout/navbar";
 import { Sidebar } from "@/components/layout/sidebar";
 
+import { DashboardStats } from "@/components/dashboard/dashboard-stats";
+
 import { FolderList } from "@/components/folders/folder-list";
 import { NotesGrid } from "@/components/notes/notes-grid";
 import { CreateNoteForm } from "@/components/notes/create-note-form";
@@ -38,12 +40,14 @@ export default async function DashboardPage({
     search,
   } = await searchParams;
 
-  const folders = await getFolders();
+  const folders =
+    await getFolders();
 
-  const notes = await getNotes(
-    folder,
-    search
-  );
+  const notes =
+    await getNotes(
+      folder,
+      search
+    );
 
   const selectedFolder =
     folders.find(
@@ -55,7 +59,14 @@ export default async function DashboardPage({
       navbar={<Navbar />}
       sidebar={<Sidebar />}
     >
-      <FolderList folders={folders} />
+      <DashboardStats
+        notes={notes.length}
+        folders={folders.length}
+      />
+
+      <FolderList
+        folders={folders}
+      />
 
       <SearchBar />
 
@@ -65,7 +76,9 @@ export default async function DashboardPage({
 
       <SearchInfo
         search={search}
-        folderName={selectedFolder?.name}
+        folderName={
+          selectedFolder?.name
+        }
       />
 
       <NotesGrid
