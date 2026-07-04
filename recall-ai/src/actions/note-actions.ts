@@ -244,3 +244,67 @@ export async function getFolders() {
     },
   });
 }
+export async function createResource(
+  title: string,
+  url: string,
+  type: string,
+  description?: string
+) {
+  const session = await auth();
+
+  if (!session?.user?.email) {
+    throw new Error("Unauthorized");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+  });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const resource =
+    await prisma.resource.create({
+      data: {
+        title,
+        url,
+        type,
+        description,
+        userId: user.id,
+      },
+    });
+
+  revalidatePath("/dashboard");
+
+  return resource;
+}
+
+export async function getResources() {
+  const session = await auth();
+
+  if (!session?.user?.email) {
+    return [];
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+  });
+
+  if (!user) {
+    return [];
+  }
+
+  return await prisma.resource.findMany({
+    where: {
+      userId: user.id,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+}
