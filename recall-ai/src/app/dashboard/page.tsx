@@ -13,11 +13,14 @@ import { Sidebar } from "@/components/layout/sidebar";
 import { DashboardStats } from "@/components/dashboard/dashboard-stats";
 
 import { FolderList } from "@/components/folders/folder-list";
-import { NotesGrid } from "@/components/notes/notes-grid";
-import { CreateNoteForm } from "@/components/notes/create-note-form";
 
 import { SearchBar } from "@/components/search/search-bar";
 import { SearchInfo } from "@/components/search/search-info";
+
+import { CreateNoteForm } from "@/components/notes/create-note-form";
+import { NotesGrid } from "@/components/notes/notes-grid";
+
+import { CreateResourceForm } from "@/components/resources/create-resource-form";
 
 interface DashboardPageProps {
   searchParams: Promise<{
@@ -73,6 +76,8 @@ export default async function DashboardPage({
       <CreateNoteForm
         folders={folders}
       />
+
+      <CreateResourceForm />
 
       <SearchInfo
         search={search}
