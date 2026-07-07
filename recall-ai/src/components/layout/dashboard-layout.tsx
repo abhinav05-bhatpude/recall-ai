@@ -10,10 +10,10 @@ export function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
       {navbar}
 
-      <div className="page-container flex gap-6 px-6 py-8">
+      <div className="mx-auto flex max-w-7xl gap-8 px-6 py-8">
         {sidebar}
 
         <main className="flex-1">
