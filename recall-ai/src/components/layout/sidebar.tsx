@@ -19,21 +19,21 @@ export function Sidebar() {
         </Link>
 
         <Link
-          href="#"
+          href="/dashboard/notes"
           className="block rounded-xl px-4 py-3 font-medium text-slate-700 transition hover:bg-blue-50 hover:text-blue-700"
         >
           📝 Notes
         </Link>
 
         <Link
-          href="#"
+          href="/dashboard/folders"
           className="block rounded-xl px-4 py-3 font-medium text-slate-700 transition hover:bg-blue-50 hover:text-blue-700"
         >
           📁 Folders
         </Link>
 
         <Link
-          href="#"
+          href="/dashboard/resources"
           className="block rounded-xl px-4 py-3 font-medium text-slate-700 transition hover:bg-blue-50 hover:text-blue-700"
         >
           📚 Knowledge Hub
