@@ -46,6 +46,7 @@ export function ResourceGrid({
           }
           url={resource.url}
           type={resource.type}
+          id={resource.id}
         />
       ))}
     </div>
