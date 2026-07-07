@@ -2,6 +2,7 @@
 
 import { Search } from "lucide-react";
 import {
+  usePathname,
   useRouter,
   useSearchParams,
 } from "next/navigation";
@@ -13,6 +14,9 @@ import {
 export function SearchBar() {
   const router = useRouter();
 
+  const pathname =
+    usePathname();
+
   const searchParams =
     useSearchParams();
 
@@ -22,21 +26,30 @@ export function SearchBar() {
     );
 
   useEffect(() => {
-    const params =
-      new URLSearchParams(
-        searchParams.toString()
+    const timeout = setTimeout(() => {
+      const params =
+        new URLSearchParams(
+          searchParams.toString()
+        );
+
+      if (search.trim()) {
+        params.set("search", search);
+      } else {
+        params.delete("search");
+      }
+
+      router.replace(
+        `${pathname}?${params.toString()}`
       );
+    }, 400);
 
-    if (search.trim()) {
-      params.set("search", search);
-    } else {
-      params.delete("search");
-    }
-
-    router.replace(
-      `/dashboard?${params.toString()}`
-    );
-  }, [search]);
+    return () => clearTimeout(timeout);
+  }, [
+    search,
+    router,
+    pathname,
+    searchParams,
+  ]);
 
   return (
     <div className="mb-6">
