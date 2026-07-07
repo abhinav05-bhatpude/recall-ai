@@ -21,8 +21,8 @@ export function FolderList({
     folderId: string
   ) {
     const confirmed = window.confirm(
-      "Delete this folder?"
-    );
+  "Are you sure you want to delete this folder?"
+)
 
     if (!confirmed) return;
 
@@ -31,12 +31,21 @@ export function FolderList({
 
       router.refresh();
     } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-      } else {
-        alert("Failed to delete folder.");
-      }
-    }
+  console.error(error);
+
+  if (
+    error instanceof Error &&
+    error.message.includes("contains notes")
+  ) {
+    alert(
+      "📁 This folder contains notes.\n\nDelete or move the notes first."
+    );
+  } else {
+    alert(
+      "❌ Failed to delete folder."
+    );
+  }
+}
   }
 
   return (
