@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { deleteFolder } from "@/actions/note-actions";
 
 interface Folder {
   id: string;
@@ -15,6 +16,28 @@ export function FolderList({
   folders,
 }: FolderListProps) {
   const router = useRouter();
+
+  async function handleDelete(
+    folderId: string
+  ) {
+    const confirmed = window.confirm(
+      "Delete this folder?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+      await deleteFolder(folderId);
+
+      router.refresh();
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("Failed to delete folder.");
+      }
+    }
+  }
 
   return (
     <div className="mb-8">
@@ -33,17 +56,30 @@ export function FolderList({
 
       <div className="space-y-2">
         {folders.map((folder) => (
-          <button
+          <div
             key={folder.id}
-            onClick={() =>
-              router.push(
-                `/dashboard?folder=${folder.id}`
-              )
-            }
-            className="block w-full rounded-lg border p-3 text-left hover:bg-gray-50"
+            className="flex items-center gap-2"
           >
-            📁 {folder.name}
-          </button>
+            <button
+              onClick={() =>
+                router.push(
+                  `/dashboard?folder=${folder.id}`
+                )
+              }
+              className="flex-1 rounded-lg border p-3 text-left hover:bg-gray-50"
+            >
+              📁 {folder.name}
+            </button>
+
+            <button
+              onClick={() =>
+                handleDelete(folder.id)
+              }
+              className="rounded-lg bg-red-50 px-3 py-3 text-red-600 hover:bg-red-100"
+            >
+              🗑
+            </button>
+          </div>
         ))}
       </div>
     </div>

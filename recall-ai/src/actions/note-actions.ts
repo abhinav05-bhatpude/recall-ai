@@ -377,3 +377,54 @@ export async function deleteResource(
 
   revalidatePath("/dashboard");
 }
+export async function deleteFolder(
+  folderId: string
+) {
+  const session = await auth();
+
+  if (!session?.user?.email) {
+    throw new Error("Unauthorized");
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: session.user.email,
+    },
+  });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const folder =
+    await prisma.folder.findUnique({
+      where: {
+        id: folderId,
+      },
+      include: {
+        notes: true,
+      },
+    });
+
+  if (!folder) {
+    throw new Error("Folder not found");
+  }
+
+  if (folder.userId !== user.id) {
+    throw new Error("Forbidden");
+  }
+
+  if (folder.notes.length > 0) {
+    throw new Error(
+      "This folder contains notes. Delete or move them first."
+    );
+  }
+
+  await prisma.folder.delete({
+    where: {
+      id: folderId,
+    },
+  });
+
+  revalidatePath("/dashboard");
+}
