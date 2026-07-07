@@ -1,12 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function Sidebar() {
+  const pathname = usePathname();
+
   const menuItems = [
     {
       label: "Dashboard",
       href: "/dashboard",
       icon: "🏠",
-      active: true,
     },
     {
       label: "Notes",
@@ -33,7 +37,7 @@ export function Sidebar() {
   return (
     <aside className="sticky top-24 h-fit w-72 rounded-3xl border border-slate-200 bg-white p-6 shadow-lg">
       <div className="mb-10">
-        <h1 className="text-3xl font-extrabold tracking-tight">
+        <h1 className="text-3xl font-extrabold">
           Recall
           <span className="text-emerald-600">
             AI
@@ -46,25 +50,28 @@ export function Sidebar() {
       </div>
 
       <nav className="space-y-2">
-        {menuItems.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={`flex items-center gap-3 rounded-2xl px-4 py-3 transition-all duration-200 ${
-              item.active
-                ? "bg-emerald-600 text-white shadow-md"
-                : "text-slate-700 hover:bg-slate-100"
-            }`}
-          >
-            <span className="text-lg">
-              {item.icon}
-            </span>
+        {menuItems.map((item) => {
+          const active =
+            pathname === item.href;
 
-            <span className="font-medium">
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`flex items-center gap-3 rounded-2xl px-4 py-3 font-medium transition-all duration-200 ${
+                active
+                  ? "bg-emerald-600 text-white shadow-md"
+                  : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
+              }`}
+            >
+              <span className="text-lg">
+                {item.icon}
+              </span>
+
               {item.label}
-            </span>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </nav>
 
       <div className="mt-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 p-5 text-white">
@@ -73,8 +80,7 @@ export function Sidebar() {
         </h3>
 
         <p className="mt-2 text-sm opacity-90">
-          Organize your knowledge,
-          powered by AI.
+          Organize your knowledge with AI.
         </p>
       </div>
     </aside>
