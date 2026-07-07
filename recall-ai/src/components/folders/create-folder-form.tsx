@@ -40,10 +40,15 @@ export function CreateFolderForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="mb-6 flex gap-2"
-    >
+  <form
+    onSubmit={handleSubmit}
+    className="mb-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+  >
+    <h2 className="mb-4 text-xl font-semibold">
+      📁 Create Folder
+    </h2>
+
+    <div className="flex gap-3">
       <input
         type="text"
         placeholder="New Folder"
@@ -51,18 +56,19 @@ export function CreateFolderForm() {
         onChange={(e) =>
           setName(e.target.value)
         }
-        className="flex-1 rounded border p-2"
+        className="flex-1 rounded-xl border border-slate-300 p-3 outline-none transition focus:border-emerald-500"
       />
 
       <button
         type="submit"
         disabled={loading}
-        className="rounded bg-green-600 px-4 py-2 text-white disabled:opacity-50"
+        className="rounded-xl bg-emerald-600 px-6 py-3 text-white transition hover:bg-emerald-700 disabled:opacity-50"
       >
         {loading
           ? "Creating..."
           : "Create"}
       </button>
-    </form>
-  );
+    </div>
+  </form>
+);
 }
