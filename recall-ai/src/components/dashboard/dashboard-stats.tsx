@@ -1,11 +1,13 @@
 interface DashboardStatsProps {
   notes: number;
   folders: number;
+  resources: number;
 }
 
 export function DashboardStats({
   notes,
   folders,
+  resources,
 }: DashboardStatsProps) {
   return (
     <div className="mb-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -33,7 +35,7 @@ export function DashboardStats({
       <StatCard
         emoji="📚"
         title="Resources"
-        value={0}
+        value={resources}
         color="orange"
       />
     </div>
