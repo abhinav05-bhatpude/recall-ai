@@ -60,7 +60,7 @@ export default async function NotesPage({
         📝 Notes
       </h1>
 
-      <SearchBar />
+       <SearchBar /> 
 
       <CreateNoteForm
         folders={folders}
