@@ -75,7 +75,7 @@ export default async function DashboardPage({
         folders={folders}
       />
 
-      <SearchBar />
+       <SearchBar /> 
 
       <CreateNoteForm
         folders={folders}
