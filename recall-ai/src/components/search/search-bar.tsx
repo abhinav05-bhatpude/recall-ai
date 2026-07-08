@@ -13,27 +13,29 @@ import {
 
 export function SearchBar() {
   const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const pathname =
-    usePathname();
-
-  const searchParams =
-    useSearchParams();
-
-  const [search, setSearch] =
-    useState(
-      searchParams.get("search") || ""
-    );
+  const [search, setSearch] = useState(
+    searchParams.get("search") || ""
+  );
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const params =
-        new URLSearchParams(
-          searchParams.toString()
-        );
+      const params = new URLSearchParams(
+        searchParams.toString()
+      );
+
+      const currentSearch =
+        searchParams.get("search") || "";
+
+      // Don't navigate if nothing changed
+      if (currentSearch === search.trim()) {
+        return;
+      }
 
       if (search.trim()) {
-        params.set("search", search);
+        params.set("search", search.trim());
       } else {
         params.delete("search");
       }
@@ -44,12 +46,7 @@ export function SearchBar() {
     }, 400);
 
     return () => clearTimeout(timeout);
-  }, [
-    search,
-    router,
-    pathname,
-    searchParams,
-  ]);
+  }, [search, pathname, router]);
 
   return (
     <div className="mb-6">
