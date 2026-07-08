@@ -10,6 +10,7 @@ import {
 } from "@/actions/ai-actions";
 
 import { deleteNote } from "@/actions/note-actions";
+import { EditNoteForm } from "./edit-note-form";
 
 interface NoteCardProps {
   id: string;
@@ -25,6 +26,8 @@ export function NoteCard({
   createdAt,
 }: NoteCardProps) {
   const router = useRouter();
+  const [editing, setEditing] =
+  useState(false);
 
   const [summary, setSummary] =
     useState("");
@@ -117,9 +120,12 @@ export function NoteCard({
           </div>
 
           <div className="flex gap-2">
-            <button className="rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100">
-              ✏️ Edit
-            </button>
+            <button
+  onClick={() => setEditing(true)}
+  className="rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100"
+>
+  ✏️ Edit
+</button>
 
             <button
               onClick={handleDelete}
@@ -130,11 +136,22 @@ export function NoteCard({
           </div>
         </div>
 
-        <div className="rounded-2xl bg-slate-50 p-4">
-          <p className="whitespace-pre-wrap leading-7 text-slate-700">
-            {content}
-          </p>
-        </div>
+       {editing ? (
+  <EditNoteForm
+    id={id}
+    initialTitle={title}
+    initialContent={content}
+    onCancel={() =>
+      setEditing(false)
+    }
+  />
+) : (
+  <div className="rounded-2xl bg-slate-50 p-4">
+    <p className="whitespace-pre-wrap leading-7 text-slate-700">
+      {content}
+    </p>
+  </div>
+)}
 
         <div className="mt-6 flex flex-wrap gap-3">
           <button
