@@ -21,7 +21,6 @@ import { CreateNoteForm } from "@/components/notes/create-note-form";
 import { NotesGrid } from "@/components/notes/notes-grid";
 
 import { CreateResourceForm } from "@/components/resources/create-resource-form";
-import { ResourceGrid } from "@/components/resources/resource-grid";
 
 interface DashboardPageProps {
   searchParams: Promise<{
@@ -54,9 +53,7 @@ export default async function DashboardPage({
     );
 
   const resources =
-    await getResources(
-      search
-    );
+    await getResources();
 
   const selectedFolder =
     folders.find(
@@ -71,6 +68,7 @@ export default async function DashboardPage({
       <DashboardStats
         notes={notes.length}
         folders={folders.length}
+        resources={resources.length}
       />
 
       <FolderList
@@ -94,18 +92,7 @@ export default async function DashboardPage({
 
       <NotesGrid
         notes={notes}
-        search={search}
       />
-
-      <div className="mt-12">
-        <h2 className="mb-6 text-3xl font-bold text-slate-800">
-          📚 Knowledge Hub
-        </h2>
-
-        <ResourceGrid
-          resources={resources}
-        />
-      </div>
     </DashboardLayout>
   );
 }
