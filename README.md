@@ -53,8 +53,9 @@ The project demonstrates modern full-stack development using Next.js, PostgreSQL
 ## 📁 Folder Management
 
 - Create folders
+- Edit folders
+- Delete folders
 - Organize notes into folders
-- Filter notes by folder
 - Quick folder navigation
 
 ---
@@ -105,6 +106,58 @@ The project demonstrates modern full-stack development using Next.js, PostgreSQL
 - Fast Navigation
 - Beautiful Cards
 - Mobile Friendly
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+
+---
+
+## Backend
+
+- Next.js Server Actions
+- Next.js API Routes
+
+---
+
+## Database
+
+- PostgreSQL
+- Prisma ORM
+
+---
+
+## Authentication
+
+- Auth.js (NextAuth)
+
+---
+
+## Artificial Intelligence
+
+- Google Gemini API
+
+---
+
+## Deployment
+
+- Vercel
+
+---
+
+## Development Tools
+
+- Git
+- GitHub
+- VS Code
+- npm
 
 ---
 
