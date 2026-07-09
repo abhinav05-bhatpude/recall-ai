@@ -12,36 +12,116 @@
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
-RecallAI is an AI-powered personal knowledge management platform designed to help users organize notes, learning resources, and knowledge in one place.
+RecallAI is an AI-powered Personal Knowledge Management platform designed to help students, developers, and lifelong learners organize notes, learning resources, and knowledge in one place.
 
 Instead of simply storing notes, RecallAI leverages AI to automatically generate:
 
-- ✨ Summaries
-- 📝 Key Points
-- 📚 Study Notes
+- ✨ AI Summaries
+- 📝 AI Key Points
+- 📚 AI Study Notes
 
 making learning faster, smarter, and more efficient.
 
-This project was built as a production-style full-stack application to demonstrate modern web development practices using Next.js and AI integration.
+The project demonstrates modern full-stack development using Next.js, PostgreSQL, Prisma, Auth.js, and Gemini AI.
 
 ---
 
-## 🚀 Project Status
+# ✨ Features
+
+## 🤖 AI Features
+
+- AI Note Summarization
+- AI Key Point Generation
+- AI Study Notes Generation
+- Fast AI-powered content processing
+- Clean AI response interface
+
+---
+
+## 📝 Notes Management
+
+- Create Notes
+- Edit Notes
+- Delete Notes
+- Organize notes efficiently
+- Search notes instantly
+
+---
+
+## 📁 Folder Management
+
+- Create folders
+- Organize notes into folders
+- Filter notes by folder
+- Quick folder navigation
+
+---
+
+## 📚 Knowledge Hub
+
+- Save useful websites
+- Save GitHub repositories
+- Store YouTube videos
+- Store PDFs
+- Organize learning resources
+
+---
+
+## 🔍 Search
+
+- Instant search
+- Search by title
+- Search by content
+- Fast filtering experience
+
+---
+
+## 📊 Dashboard
+
+- Dashboard statistics
+- Notes counter
+- Folder counter
+- Resource counter
+- Beautiful dashboard cards
+
+---
+
+## 🔐 Authentication
+
+- Google Authentication
+- Secure Login
+- Protected Dashboard
+- User-specific data
+
+---
+
+## 🎨 User Experience
+
+- Responsive Design
+- Modern UI
+- Clean Dashboard
+- Fast Navigation
+- Beautiful Cards
+- Mobile Friendly
+
+---
+
+# 🚀 Project Status
 
 > ✅ Active Development
 
-More features, UI improvements, and AI capabilities are continuously being added.
+New AI features, UI improvements, and productivity tools are continuously being added.
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Abhinav Bhatpude**
 
-Aspiring Full-Stack Developer | AI Enthusiast | Building in Public
+Aspiring Full-Stack Developer • AI Enthusiast • Building in Public
 
 ---
 
-⭐ If you like this project, consider giving it a star!
+⭐ If you found this project useful, consider giving it a star!
