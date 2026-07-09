@@ -38,72 +38,49 @@ The project demonstrates modern full-stack development using Next.js, PostgreSQL
 - Fast AI-powered content processing
 - Clean AI response interface
 
----
-
 ## 📝 Notes Management
 
 - Create Notes
 - Edit Notes
 - Delete Notes
-- Organize notes efficiently
-- Search notes instantly
-
----
+- Search Notes
 
 ## 📁 Folder Management
 
-- Create folders
-- Edit folders
-- Delete folders
-- Organize notes into folders
-- Quick folder navigation
-
----
+- Create Folders
+- Delete Folders
+- Organize Notes
 
 ## 📚 Knowledge Hub
 
-- Save useful websites
-- Save GitHub repositories
-- Store YouTube videos
-- Store PDFs
-- Organize learning resources
-
----
+- Save Websites
+- Save GitHub Repositories
+- Save PDFs
+- Save YouTube Videos
 
 ## 🔍 Search
 
-- Instant search
-- Search by title
-- Search by content
-- Fast filtering experience
-
----
+- Instant Search
+- Filter Notes
+- Search by Title & Content
 
 ## 📊 Dashboard
 
-- Dashboard statistics
-- Notes counter
-- Folder counter
-- Resource counter
-- Beautiful dashboard cards
-
----
+- Dashboard Statistics
+- Notes Counter
+- Folder Counter
+- Resource Counter
 
 ## 🔐 Authentication
 
-- Google Authentication
-- Secure Login
-- Protected Dashboard
-- User-specific data
+- Google Sign In
+- Protected Routes
+- User-specific Data
 
----
-
-## 🎨 User Experience
+## 🎨 UI
 
 - Responsive Design
-- Modern UI
-- Clean Dashboard
-- Fast Navigation
+- Modern Dashboard
 - Beautiful Cards
 - Mobile Friendly
 
@@ -111,53 +88,84 @@ The project demonstrates modern full-stack development using Next.js, PostgreSQL
 
 # 🛠 Tech Stack
 
-## Frontend
+### Frontend
 
 - Next.js 15
 - React 19
 - TypeScript
 - Tailwind CSS
 
----
-
-## Backend
+### Backend
 
 - Next.js Server Actions
-- Next.js API Routes
+- API Routes
 
----
-
-## Database
+### Database
 
 - PostgreSQL
 - Prisma ORM
 
----
+### Authentication
 
-## Authentication
+- Auth.js
 
-- Auth.js (NextAuth)
-
----
-
-## Artificial Intelligence
+### AI
 
 - Google Gemini API
 
----
-
-## Deployment
+### Deployment
 
 - Vercel
 
 ---
 
-## Development Tools
+# 📸 Screenshots
 
-- Git
-- GitHub
-- VS Code
-- npm
+> Screenshots will be added after deployment.
+
+| Feature | Preview |
+|---------|---------|
+| Dashboard | Coming Soon |
+| Notes | Coming Soon |
+| AI Summary | Coming Soon |
+| Knowledge Hub | Coming Soon |
+| Folders | Coming Soon |
+
+---
+
+# 🎥 Demo
+
+Live demo will be available after deployment.
+
+```text
+Coming Soon
+```
+
+---
+
+# 🏗 Project Architecture
+
+```text
+RecallAI
+│
+├── Authentication
+│      │
+│      └── Auth.js
+│
+├── Dashboard
+│      │
+│      ├── Notes
+│      ├── Folders
+│      └── Resources
+│
+├── AI Engine
+│      │
+│      ├── Summary
+│      ├── Key Points
+│      └── Study Notes
+│
+└── PostgreSQL Database
+```
 
 ---
 
@@ -165,7 +173,7 @@ The project demonstrates modern full-stack development using Next.js, PostgreSQL
 
 > ✅ Active Development
 
-New AI features, UI improvements, and productivity tools are continuously being added.
+More AI features, UI improvements, and productivity tools are planned.
 
 ---
 
