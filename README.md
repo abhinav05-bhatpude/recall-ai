@@ -236,6 +236,48 @@ It enables users to:
 The project demonstrates production-ready full-stack development using modern technologies and AI integration.
 ---
 
+---
+
+# 🗺️ Roadmap
+
+### ✅ Current
+
+- AI Note Summaries
+- AI Key Points
+- AI Study Notes
+- Notes & Folder Management
+- Knowledge Hub
+- Dashboard
+- Google Authentication
+
+---
+
+### 🚀 Upcoming
+
+- Rich Text Editor
+- Note Tags
+- Favorites
+- PDF Upload
+- AI Flashcards
+- AI Chat
+- Semantic Search
+- Dark Mode Improvements
+
+---
+
+# 📚 What I Learned
+
+- Next.js App Router
+- TypeScript
+- Prisma ORM
+- PostgreSQL
+- Auth.js
+- Gemini AI Integration
+- Server Actions
+- Full-Stack Development
+
+> RecallAI is continuously evolving with new AI-powered productivity features.
+
 # 🚀 Project Status
 
 ✅ Active Development
