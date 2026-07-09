@@ -14,17 +14,9 @@
 
 # 📖 Overview
 
-RecallAI is an AI-powered Personal Knowledge Management platform designed to help students, developers, and lifelong learners organize notes, learning resources, and knowledge in one place.
+RecallAI is an AI-powered Personal Knowledge Management platform that helps users organize notes, folders, and learning resources while using AI to generate summaries, key points, and study notes.
 
-Instead of simply storing notes, RecallAI leverages AI to automatically generate:
-
-- ✨ AI Summaries
-- 📝 AI Key Points
-- 📚 AI Study Notes
-
-making learning faster, smarter, and more efficient.
-
-The project demonstrates modern full-stack development using Next.js, PostgreSQL, Prisma, Auth.js, and Gemini AI.
+Built with modern full-stack technologies to demonstrate production-ready web development practices.
 
 ---
 
@@ -35,20 +27,16 @@ The project demonstrates modern full-stack development using Next.js, PostgreSQL
 - AI Note Summarization
 - AI Key Point Generation
 - AI Study Notes Generation
-- Fast AI-powered content processing
-- Clean AI response interface
 
-## 📝 Notes Management
+## 📝 Notes
 
-- Create Notes
-- Edit Notes
-- Delete Notes
+- Create, Edit & Delete Notes
 - Search Notes
+- Organize Knowledge
 
-## 📁 Folder Management
+## 📁 Folders
 
-- Create Folders
-- Delete Folders
+- Create & Delete Folders
 - Organize Notes
 
 ## 📚 Knowledge Hub
@@ -62,118 +50,136 @@ The project demonstrates modern full-stack development using Next.js, PostgreSQL
 
 - Instant Search
 - Filter Notes
-- Search by Title & Content
-
-## 📊 Dashboard
-
-- Dashboard Statistics
-- Notes Counter
-- Folder Counter
-- Resource Counter
 
 ## 🔐 Authentication
 
-- Google Sign In
-- Protected Routes
-- User-specific Data
+- Google Authentication
+- Protected Dashboard
 
-## 🎨 UI
+## 📊 Dashboard
 
-- Responsive Design
-- Modern Dashboard
-- Beautiful Cards
-- Mobile Friendly
+- Statistics Cards
+- Notes Counter
+- Folder Counter
+- Resource Counter
 
 ---
 
 # 🛠 Tech Stack
 
-### Frontend
-
-- Next.js 15
-- React 19
-- TypeScript
-- Tailwind CSS
-
-### Backend
-
-- Next.js Server Actions
-- API Routes
-
-### Database
-
-- PostgreSQL
-- Prisma ORM
-
-### Authentication
-
-- Auth.js
-
-### AI
-
-- Google Gemini API
-
-### Deployment
-
-- Vercel
+| Category | Technology |
+|----------|------------|
+| Frontend | Next.js 15, React 19, TypeScript, Tailwind CSS |
+| Backend | Next.js Server Actions, API Routes |
+| Database | PostgreSQL + Prisma ORM |
+| Authentication | Auth.js |
+| AI | Google Gemini API |
+| Deployment | Vercel |
 
 ---
 
 # 📸 Screenshots
 
-> Screenshots will be added after deployment.
-
-| Feature | Preview |
-|---------|---------|
+| Page | Status |
+|------|--------|
 | Dashboard | Coming Soon |
 | Notes | Coming Soon |
-| AI Summary | Coming Soon |
-| Knowledge Hub | Coming Soon |
 | Folders | Coming Soon |
+| Knowledge Hub | Coming Soon |
+| AI Summary | Coming Soon |
 
 ---
 
-# 🎥 Demo
-
-Live demo will be available after deployment.
+# 🏗 Architecture
 
 ```text
-Coming Soon
+User
+   │
+   ▼
+Next.js App
+   │
+   ├── Authentication
+   ├── Dashboard
+   ├── AI Features
+   ├── Notes
+   ├── Folders
+   └── Knowledge Hub
+          │
+          ▼
+   PostgreSQL Database
 ```
 
 ---
 
-# 🏗 Project Architecture
+# 🚀 Getting Started
+
+## Clone the repository
+
+```bash
+git clone https://github.com/abhinav05-bhatpude/recall-ai.git
+```
+
+Move into the project
+
+```bash
+cd recall-ai
+```
+
+---
+
+## Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+## Configure Environment Variables
+
+Create a file named
 
 ```text
-RecallAI
-│
-├── Authentication
-│      │
-│      └── Auth.js
-│
-├── Dashboard
-│      │
-│      ├── Notes
-│      ├── Folders
-│      └── Resources
-│
-├── AI Engine
-│      │
-│      ├── Summary
-│      ├── Key Points
-│      └── Study Notes
-│
-└── PostgreSQL Database
+.env.local
+```
+
+Add your environment variables.
+
+---
+
+## Run Development Server
+
+```bash
+npm run dev
+```
+
+Open
+
+```text
+http://localhost:3000
+```
+
+---
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## Start Production Server
+
+```bash
+npm start
 ```
 
 ---
 
 # 🚀 Project Status
 
-> ✅ Active Development
-
-More AI features, UI improvements, and productivity tools are planned.
+✅ Active Development
 
 ---
 
@@ -181,8 +187,8 @@ More AI features, UI improvements, and productivity tools are planned.
 
 **Abhinav Bhatpude**
 
-Aspiring Full-Stack Developer • AI Enthusiast • Building in Public
+Aspiring Full-Stack Developer | AI Enthusiast | Building in Public
 
 ---
 
-⭐ If you found this project useful, consider giving it a star!
+⭐ If you like this project, consider giving it a star.
