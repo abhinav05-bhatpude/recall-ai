@@ -120,29 +120,7 @@ Before running the project, make sure you have:
 
 ---
 
-# ⚙️ Environment Variables
 
-Create a file named:
-
-```text
-.env.local
-```
-
-Add the following variables:
-
-```env
-DATABASE_URL=
-
-AUTH_SECRET=
-
-AUTH_GOOGLE_ID=
-
-AUTH_GOOGLE_SECRET=
-
-AUTH_URL=
-
-GEMINI_API_KEY=
-```
 
 ---
 
@@ -194,7 +172,68 @@ Next.js
          ▼
  PostgreSQL
 ```
+---
 
+# 🤖 AI Features
+
+RecallAI uses Google's **Gemini AI** to transform raw notes into structured learning material.
+
+### ✨ AI Note Summarization
+
+Generate concise summaries from lengthy notes, making revision faster and easier.
+
+### 📝 AI Key Points
+
+Extract the most important concepts from any note with a single click.
+
+### 📚 AI Study Notes
+
+Automatically generate structured study notes suitable for revision and exam preparation.
+
+---
+
+# 🔄 Application Workflow
+
+```text
+                 Google Login
+                      │
+                      ▼
+             User Dashboard
+                      │
+      ┌───────────────┼────────────────┐
+      │               │                │
+      ▼               ▼                ▼
+   Notes          Folders       Knowledge Hub
+      │               │                │
+      └───────────────┼────────────────┘
+                      │
+                      ▼
+              Google Gemini AI
+                      │
+      ┌───────────────┼────────────────┐
+      │               │                │
+      ▼               ▼                ▼
+ AI Summary     Key Points      Study Notes
+                      │
+                      ▼
+              Better Learning
+```
+
+---
+
+# 🎯 Why RecallAI?
+
+Unlike traditional note-taking applications, RecallAI combines note management with AI-powered learning assistance.
+
+It enables users to:
+
+- Organize notes efficiently
+- Manage learning resources
+- Generate AI-powered summaries
+- Create structured study notes
+- Improve productivity while learning
+
+The project demonstrates production-ready full-stack development using modern technologies and AI integration.
 ---
 
 # 🚀 Project Status
