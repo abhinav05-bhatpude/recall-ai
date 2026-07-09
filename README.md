@@ -14,29 +14,31 @@
 
 # 📖 Overview
 
-RecallAI is an AI-powered Personal Knowledge Management platform that helps users organize notes, folders, and learning resources while using AI to generate summaries, key points, and study notes.
+RecallAI is an AI-powered Personal Knowledge Management platform that helps users organize notes, folders, and learning resources while leveraging AI to generate summaries, key points, and study notes.
 
-Built with modern full-stack technologies to demonstrate production-ready web development practices.
+It demonstrates modern full-stack development using Next.js, Prisma, PostgreSQL, Auth.js, and Google's Gemini AI.
 
 ---
 
 # ✨ Features
 
-## 🤖 AI Features
+## 🤖 AI
 
 - AI Note Summarization
-- AI Key Point Generation
-- AI Study Notes Generation
+- AI Key Points
+- AI Study Notes
 
 ## 📝 Notes
 
-- Create, Edit & Delete Notes
+- Create Notes
+- Edit Notes
+- Delete Notes
 - Search Notes
-- Organize Knowledge
 
 ## 📁 Folders
 
-- Create & Delete Folders
+- Create Folders
+- Delete Folders
 - Organize Notes
 
 ## 📚 Knowledge Hub
@@ -46,22 +48,16 @@ Built with modern full-stack technologies to demonstrate production-ready web de
 - Save PDFs
 - Save YouTube Videos
 
-## 🔍 Search
+## 📊 Dashboard
 
-- Instant Search
-- Filter Notes
+- Notes Statistics
+- Folder Statistics
+- Resource Statistics
 
 ## 🔐 Authentication
 
-- Google Authentication
-- Protected Dashboard
-
-## 📊 Dashboard
-
-- Statistics Cards
-- Notes Counter
-- Folder Counter
-- Resource Counter
+- Google Sign-In
+- Protected Routes
 
 ---
 
@@ -70,7 +66,7 @@ Built with modern full-stack technologies to demonstrate production-ready web de
 | Category | Technology |
 |----------|------------|
 | Frontend | Next.js 15, React 19, TypeScript, Tailwind CSS |
-| Backend | Next.js Server Actions, API Routes |
+| Backend | Next.js Server Actions |
 | Database | PostgreSQL + Prisma ORM |
 | Authentication | Auth.js |
 | AI | Google Gemini API |
@@ -80,46 +76,22 @@ Built with modern full-stack technologies to demonstrate production-ready web de
 
 # 📸 Screenshots
 
-| Page | Status |
-|------|--------|
+| Feature | Status |
+|---------|--------|
 | Dashboard | Coming Soon |
 | Notes | Coming Soon |
-| Folders | Coming Soon |
 | Knowledge Hub | Coming Soon |
 | AI Summary | Coming Soon |
 
 ---
 
-# 🏗 Architecture
-
-```text
-User
-   │
-   ▼
-Next.js App
-   │
-   ├── Authentication
-   ├── Dashboard
-   ├── AI Features
-   ├── Notes
-   ├── Folders
-   └── Knowledge Hub
-          │
-          ▼
-   PostgreSQL Database
-```
-
----
-
 # 🚀 Getting Started
 
-## Clone the repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/abhinav05-bhatpude/recall-ai.git
 ```
-
-Move into the project
 
 ```bash
 cd recall-ai
@@ -127,7 +99,7 @@ cd recall-ai
 
 ---
 
-## Install dependencies
+## Install Dependencies
 
 ```bash
 npm install
@@ -135,15 +107,42 @@ npm install
 
 ---
 
-## Configure Environment Variables
+# ✅ Prerequisites
 
-Create a file named
+Before running the project, make sure you have:
+
+- Node.js 20+
+- npm
+- PostgreSQL Database (Neon recommended)
+- Google Cloud OAuth Credentials
+- Gemini API Key
+- Git
+
+---
+
+# ⚙️ Environment Variables
+
+Create a file named:
 
 ```text
 .env.local
 ```
 
-Add your environment variables.
+Add the following variables:
+
+```env
+DATABASE_URL=
+
+AUTH_SECRET=
+
+AUTH_GOOGLE_ID=
+
+AUTH_GOOGLE_SECRET=
+
+AUTH_URL=
+
+GEMINI_API_KEY=
+```
 
 ---
 
@@ -153,7 +152,7 @@ Add your environment variables.
 npm run dev
 ```
 
-Open
+Open:
 
 ```text
 http://localhost:3000
@@ -161,7 +160,7 @@ http://localhost:3000
 
 ---
 
-## Build for Production
+## Build Production
 
 ```bash
 npm run build
@@ -169,10 +168,31 @@ npm run build
 
 ---
 
-## Start Production Server
+## Start Production
 
 ```bash
 npm start
+```
+
+---
+
+# 🏗 Architecture
+
+```text
+User
+ │
+ ▼
+Next.js
+ │
+ ├── Authentication
+ ├── Dashboard
+ ├── Notes
+ ├── Folders
+ ├── Knowledge Hub
+ └── AI Services
+         │
+         ▼
+ PostgreSQL
 ```
 
 ---
@@ -187,8 +207,8 @@ npm start
 
 **Abhinav Bhatpude**
 
-Aspiring Full-Stack Developer | AI Enthusiast | Building in Public
+Aspiring Full-Stack Developer • AI Enthusiast • Building in Public
 
 ---
 
-⭐ If you like this project, consider giving it a star.
+⭐ If you found this project useful, consider giving it a star!
