@@ -39,9 +39,9 @@ export function CreateResourceForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+      className="mb-8 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl"
     >
-      <h2 className="mb-6 text-2xl font-bold text-slate-800">
+      <h2 className="mb-6 text-2xl font-bold text-white">
         📚 Save Resource
       </h2>
 
@@ -51,16 +51,16 @@ export function CreateResourceForm() {
         onChange={(e) =>
           setTitle(e.target.value)
         }
-        className="mb-4 w-full rounded-xl border p-3"
+        className="mb-4 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition focus:border-emerald-400/40 focus:ring-2 focus:ring-emerald-500/20"
       />
 
       <input
-        placeholder="https://..."
+        placeholder="https://example.com"
         value={url}
         onChange={(e) =>
           setUrl(e.target.value)
         }
-        className="mb-4 w-full rounded-xl border p-3"
+        className="mb-4 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition focus:border-emerald-400/40 focus:ring-2 focus:ring-emerald-500/20"
       />
 
       <select
@@ -68,7 +68,7 @@ export function CreateResourceForm() {
         onChange={(e) =>
           setType(e.target.value)
         }
-        className="mb-4 w-full rounded-xl border p-3"
+        className="mb-4 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-emerald-400/40 focus:ring-2 focus:ring-emerald-500/20"
       >
         <option>Website</option>
         <option>GitHub</option>
@@ -84,14 +84,14 @@ export function CreateResourceForm() {
         onChange={(e) =>
           setDescription(e.target.value)
         }
-        className="mb-5 w-full rounded-xl border p-3"
+        className="mb-5 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition focus:border-emerald-400/40 focus:ring-2 focus:ring-emerald-500/20"
       />
 
       <button
         type="submit"
-        className="rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white transition hover:bg-emerald-700"
+        className="rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-emerald-600 hover:to-green-700"
       >
-        Save Resource
+        🚀 Save Resource
       </button>
     </form>
   );
