@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
 import { getFolders } from "@/actions/note-actions";
+import { DemoBanner } from "@/components/demo/demo-banner";
 
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import { Navbar } from "@/components/layout/navbar";
