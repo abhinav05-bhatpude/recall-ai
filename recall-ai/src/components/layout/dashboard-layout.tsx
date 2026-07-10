@@ -10,15 +10,23 @@ export function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
-      {navbar}
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-900">
 
-      <div className="mx-auto flex max-w-7xl gap-8 px-6 py-8">
-        {sidebar}
+      {/* Background Blurs */}
+      <div className="absolute left-10 top-10 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl" />
 
-        <main className="flex-1">
-          {children}
-        </main>
+      <div className="absolute bottom-10 right-10 h-80 w-80 rounded-full bg-green-400/10 blur-3xl" />
+
+      <div className="relative z-10">
+        {navbar}
+
+        <div className="mx-auto flex max-w-7xl gap-8 px-6 py-8">
+          {sidebar}
+
+          <main className="flex-1">
+            {children}
+          </main>
+        </div>
       </div>
     </div>
   );
