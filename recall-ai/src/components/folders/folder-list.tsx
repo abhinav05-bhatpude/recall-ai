@@ -21,8 +21,8 @@ export function FolderList({
     folderId: string
   ) {
     const confirmed = window.confirm(
-  "Are you sure you want to delete this folder?"
-)
+      "Are you sure you want to delete this folder?"
+    );
 
     if (!confirmed) return;
 
@@ -31,43 +31,43 @@ export function FolderList({
 
       router.refresh();
     } catch (error) {
-  console.error(error);
+      console.error(error);
 
-  if (
-    error instanceof Error &&
-    error.message.includes("contains notes")
-  ) {
-    alert(
-      "📁 This folder contains notes.\n\nDelete or move the notes first."
-    );
-  } else {
-    alert(
-      "❌ Failed to delete folder."
-    );
-  }
-}
+      if (
+        error instanceof Error &&
+        error.message.includes("contains notes")
+      ) {
+        alert(
+          "📁 This folder contains notes.\n\nDelete or move the notes first."
+        );
+      } else {
+        alert(
+          "❌ Failed to delete folder."
+        );
+      }
+    }
   }
 
   return (
-    <div className="mb-8">
-      <h2 className="mb-4 text-xl font-semibold">
-        Folders
+    <div className="mb-8 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl">
+      <h2 className="mb-6 text-2xl font-bold text-white">
+        📁 Folders
       </h2>
 
       <button
         onClick={() =>
           router.push("/dashboard")
         }
-        className="mb-2 block w-full rounded-lg border p-3 text-left hover:bg-gray-50"
+        className="mb-4 block w-full rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4 text-left font-semibold text-emerald-300 transition-all duration-300 hover:bg-emerald-500/20 hover:scale-[1.02]"
       >
         📂 All Notes
       </button>
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         {folders.map((folder) => (
           <div
             key={folder.id}
-            className="flex items-center gap-2"
+            className="flex items-center gap-3"
           >
             <button
               onClick={() =>
@@ -75,7 +75,7 @@ export function FolderList({
                   `/dashboard?folder=${folder.id}`
                 )
               }
-              className="flex-1 rounded-lg border p-3 text-left hover:bg-gray-50"
+              className="flex-1 rounded-2xl border border-white/10 bg-white/5 p-4 text-left font-medium text-slate-200 transition-all duration-300 hover:border-emerald-400/30 hover:bg-white/10 hover:text-white"
             >
               📁 {folder.name}
             </button>
@@ -84,7 +84,7 @@ export function FolderList({
               onClick={() =>
                 handleDelete(folder.id)
               }
-              className="rounded-lg bg-red-50 px-3 py-3 text-red-600 hover:bg-red-100"
+              className="rounded-2xl border border-red-400/20 bg-red-500/10 px-4 py-4 text-red-300 transition-all duration-300 hover:bg-red-500/20"
             >
               🗑
             </button>
