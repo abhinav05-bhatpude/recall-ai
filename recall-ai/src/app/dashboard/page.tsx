@@ -10,6 +10,8 @@ import {
   demoNotes,
   demoFolders,
 } from "@/lib/demo/demo-data";
+import { DemoBanner } from "@/components/demo/demo-banner";
+import { DemoCTA } from "@/components/demo/demo-cta";
 
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import { Navbar } from "@/components/layout/navbar";
@@ -45,17 +47,20 @@ export default async function DashboardPage({
     search,
   } = await searchParams;
 
-  const folders =
-    await getFolders();
+  const folders = session
+  ? await getFolders()
+  : demoFolders;
 
-  const notes =
-    await getNotes(
+const notes = session
+  ? await getNotes(
       folder,
       search
-    );
+    )
+  : demoNotes;
 
-  const resources =
-    await getResources();
+const resources = session
+  ? await getResources()
+  : [];
 
   const selectedFolder =
     folders.find(
@@ -66,7 +71,9 @@ export default async function DashboardPage({
     <DashboardLayout
       navbar={<Navbar />}
       sidebar={<Sidebar />}
+
     >
+      {!session && <DemoBanner />}
       <DashboardStats
         notes={notes.length}
         folders={folders.length}
@@ -79,11 +86,17 @@ export default async function DashboardPage({
 
        <SearchBar /> 
 
-      <CreateNoteForm
-        folders={folders}
-      />
+      {session ? (
+  <>
+    <CreateNoteForm
+      folders={folders}
+    />
 
-      <CreateResourceForm />
+    <CreateResourceForm />
+  </>
+) : (
+  <DemoCTA />
+)}
 
       <SearchInfo
         search={search}
