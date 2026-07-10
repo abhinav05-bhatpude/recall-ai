@@ -15,11 +15,14 @@ interface CreateNoteFormProps {
 export function CreateNoteForm({
   folders,
 }: CreateNoteFormProps) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [folderId, setFolderId] = useState(
-    folders[0]?.id ?? ""
-  );
+  const [title, setTitle] =
+    useState("");
+
+  const [content, setContent] =
+    useState("");
+
+  const [folderId, setFolderId] =
+    useState(folders[0]?.id ?? "");
 
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
@@ -41,36 +44,37 @@ export function CreateNoteForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-6 rounded-lg border p-4"
+      className="mb-8 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl"
     >
-      <h2 className="mb-4 text-lg font-semibold">
-        Create Note
+      <h2 className="mb-6 text-2xl font-bold text-white">
+        📝 Create New Note
       </h2>
 
       <input
-        className="mb-3 w-full rounded border p-2"
-        placeholder="Title"
+        placeholder="Note title..."
         value={title}
         onChange={(e) =>
           setTitle(e.target.value)
         }
+        className="mb-4 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition focus:border-emerald-400/40 focus:ring-2 focus:ring-emerald-500/20"
       />
 
       <textarea
-        className="mb-3 w-full rounded border p-2"
-        placeholder="Content"
+        rows={6}
+        placeholder="Write your note here..."
         value={content}
         onChange={(e) =>
           setContent(e.target.value)
         }
+        className="mb-4 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-400 outline-none transition focus:border-emerald-400/40 focus:ring-2 focus:ring-emerald-500/20"
       />
 
       <select
-        className="mb-3 w-full rounded border p-2"
         value={folderId}
         onChange={(e) =>
           setFolderId(e.target.value)
         }
+        className="mb-5 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none transition focus:border-emerald-400/40 focus:ring-2 focus:ring-emerald-500/20"
       >
         {folders.map((folder) => (
           <option
@@ -84,9 +88,9 @@ export function CreateNoteForm({
 
       <button
         type="submit"
-        className="rounded bg-black px-4 py-2 text-white"
+        className="rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-emerald-600 hover:to-green-700"
       >
-        Create Note
+        🚀 Create Note
       </button>
     </form>
   );
