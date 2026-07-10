@@ -1,5 +1,8 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import {
+  demoResources,
+} from "@/lib/demo/demo-data";
 
 import { getResources } from "@/actions/note-actions";
 

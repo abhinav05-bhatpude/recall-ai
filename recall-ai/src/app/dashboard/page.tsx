@@ -6,6 +6,10 @@ import {
   getNotes,
   getResources,
 } from "@/actions/note-actions";
+import {
+  demoNotes,
+  demoFolders,
+} from "@/lib/demo/demo-data";
 
 import { DashboardLayout } from "@/components/layout/dashboard-layout";
 import { Navbar } from "@/components/layout/navbar";

@@ -1,6 +1,11 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
-
+import {
+  demoNotes,
+} from "@/lib/demo/demo-data";
+import {
+  demoFolders,
+} from "@/lib/demo/demo-data";
 import {
   getFolders,
   getNotes,
@@ -35,14 +40,13 @@ export default async function NotesPage({
     search,
   } = await searchParams;
 
-  const folders =
-    await getFolders();
+  const folders = session
+  ? await getFolders()
+  : demoFolders;
 
-  const notes =
-    await getNotes(
-      folder,
-      search
-    );
+ const notes = session
+  ? await getNotes()
+  : demoNotes;
 
   const selectedFolder =
     folders.find(
