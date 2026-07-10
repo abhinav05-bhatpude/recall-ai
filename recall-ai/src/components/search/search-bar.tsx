@@ -29,7 +29,6 @@ export function SearchBar() {
       const currentSearch =
         searchParams.get("search") || "";
 
-      // Don't navigate if nothing changed
       if (currentSearch === search.trim()) {
         return;
       }
@@ -49,21 +48,21 @@ export function SearchBar() {
   }, [search, pathname, router]);
 
   return (
-    <div className="mb-6">
+    <div className="mb-8">
       <div className="relative">
         <Search
-          size={18}
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+          size={20}
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
         />
 
         <input
           type="text"
-          placeholder="Search notes..."
+          placeholder="Search notes, folders or resources..."
           value={search}
           onChange={(e) =>
             setSearch(e.target.value)
           }
-          className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 outline-none transition focus:border-black"
+          className="w-full rounded-2xl border border-white/10 bg-white/10 py-4 pl-12 pr-5 text-white placeholder:text-slate-400 backdrop-blur-xl outline-none transition-all duration-300 focus:border-emerald-400/40 focus:ring-2 focus:ring-emerald-500/20"
         />
       </div>
     </div>
