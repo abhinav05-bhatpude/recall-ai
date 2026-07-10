@@ -13,9 +13,6 @@ import { CreateFolderForm } from "@/components/folders/create-folder-form";
 export default async function FoldersPage() {
   const session = await auth();
 
-  if (!session) {
-    redirect("/login");
-  }
 
   const folders =
     await getFolders();

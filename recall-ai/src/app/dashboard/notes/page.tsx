@@ -28,9 +28,7 @@ export default async function NotesPage({
 }: NotesPageProps) {
   const session = await auth();
 
-  if (!session) {
-    redirect("/login");
-  }
+ 
 
   const {
     folder,

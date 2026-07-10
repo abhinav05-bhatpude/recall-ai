@@ -34,9 +34,7 @@ export default async function DashboardPage({
 }: DashboardPageProps) {
   const session = await auth();
 
-  if (!session) {
-    redirect("/login");
-  }
+ 
 
   const {
     folder,
