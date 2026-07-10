@@ -51,47 +51,54 @@ export function ResourceCard({
     }
   }
 
-  function getColor() {
+  function getBadgeColor() {
     switch (type.toLowerCase()) {
       case "github":
-        return "border-slate-300 bg-slate-50";
+        return "bg-slate-500/20 text-slate-200";
+
       case "youtube":
-        return "border-red-200 bg-red-50";
+        return "bg-red-500/20 text-red-300";
+
       case "pdf":
-        return "border-orange-200 bg-orange-50";
+        return "bg-orange-500/20 text-orange-300";
+
       case "article":
-        return "border-emerald-200 bg-emerald-50";
+        return "bg-emerald-500/20 text-emerald-300";
+
       default:
-        return "border-blue-200 bg-blue-50";
+        return "bg-blue-500/20 text-blue-300";
     }
   }
 
   return (
-    <div
-      className={`rounded-3xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${getColor()}`}
-    >
-      <div className="mb-4 flex items-center justify-between">
-        <div className="text-4xl">
+    <div className="group overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-emerald-400/30 hover:shadow-emerald-500/10">
+
+      <div className="mb-5 flex items-center justify-between">
+
+        <div className="text-5xl transition duration-300 group-hover:scale-110">
           {getIcon()}
         </div>
 
         <button
           onClick={handleDelete}
-          className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-100"
+          className="rounded-xl border border-red-400/20 bg-red-500/10 px-3 py-2 text-sm font-medium text-red-300 transition hover:bg-red-500/20"
         >
           🗑 Delete
         </button>
+
       </div>
 
-      <h3 className="mb-2 text-xl font-bold text-slate-800">
+      <h3 className="mb-3 text-2xl font-bold text-white">
         {title}
       </h3>
 
-      <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
+      <span
+        className={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${getBadgeColor()}`}
+      >
         {type}
       </span>
 
-      <p className="mt-4 line-clamp-3 text-sm leading-6 text-slate-600">
+      <p className="mt-5 min-h-[72px] leading-7 text-slate-300">
         {description || "No description available."}
       </p>
 
@@ -99,10 +106,11 @@ export function ResourceCard({
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 inline-flex items-center font-semibold text-emerald-600 transition hover:text-emerald-700"
+        className="mt-6 inline-flex items-center rounded-xl bg-emerald-500 px-5 py-3 font-semibold text-white transition duration-300 hover:bg-emerald-600 hover:shadow-lg"
       >
-        Open Resource →
+        🔗 Open Resource
       </a>
+
     </div>
   );
 }
