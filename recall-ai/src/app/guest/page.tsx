@@ -44,7 +44,7 @@ export default function GuestPage() {
         <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
 
           <Link
-            href="/dashboard"
+            href="/guest/dashboard"
             className="rounded-xl bg-emerald-500 px-8 py-4 font-semibold text-white transition hover:bg-emerald-600"
           >
             Explore Demo
