@@ -35,36 +35,35 @@ export function Sidebar() {
   ];
 
   return (
-    <aside className="sticky top-24 h-fit w-72 rounded-3xl border border-slate-200 bg-white p-6 shadow-lg">
+    <aside className="sticky top-24 h-fit w-72 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl backdrop-blur-xl">
       <div className="mb-10">
-        <h1 className="text-3xl font-extrabold">
+        <h1 className="text-3xl font-extrabold text-white">
           Recall
-          <span className="text-emerald-600">
+          <span className="bg-gradient-to-r from-emerald-400 to-green-300 bg-clip-text text-transparent">
             AI
           </span>
         </h1>
 
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-slate-300">
           AI Personal Knowledge Manager
         </p>
       </div>
 
       <nav className="space-y-2">
         {menuItems.map((item) => {
-          const active =
-            pathname === item.href;
+          const active = pathname === item.href;
 
           return (
             <Link
               key={item.label}
               href={item.href}
-              className={`flex items-center gap-3 rounded-2xl px-4 py-3 font-medium transition-all duration-200 ${
+              className={`flex items-center gap-3 rounded-2xl px-4 py-3 font-medium transition-all duration-300 ${
                 active
-                  ? "bg-emerald-600 text-white shadow-md"
-                  : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
+                  ? "bg-emerald-500 text-white shadow-lg"
+                  : "text-slate-200 hover:bg-white/10 hover:text-white"
               }`}
             >
-              <span className="text-lg">
+              <span className="text-xl">
                 {item.icon}
               </span>
 
@@ -74,13 +73,13 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="mt-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 p-5 text-white">
-        <h3 className="font-semibold">
+      <div className="mt-10 rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/20 to-green-500/20 p-5 backdrop-blur">
+        <h3 className="font-semibold text-white">
           🚀 RecallAI
         </h3>
 
-        <p className="mt-2 text-sm opacity-90">
-          Organize your knowledge with AI.
+        <p className="mt-2 text-sm text-slate-300">
+          Organize your knowledge with AI and boost your productivity.
         </p>
       </div>
     </aside>
