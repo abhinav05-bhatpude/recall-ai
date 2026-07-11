@@ -42,7 +42,7 @@ export function ResourceGrid({
           key={resource.id}
           title={resource.title}
           description={
-            resource.description
+            resource.description ?? undefined
           }
           url={resource.url}
           type={resource.type}
