@@ -50,7 +50,7 @@ export function NoteCard({
       const result =
         await summarizeNote(content);
 
-      setSummary(result);
+      setSummary(result ?? "");
     } finally {
       setLoadingAction(null);
     }
@@ -63,7 +63,7 @@ export function NoteCard({
       const result =
         await generateKeyPoints(content);
 
-      setKeyPoints(result);
+      setKeyPoints(result ?? "");
     } finally {
       setLoadingAction(null);
     }
@@ -76,7 +76,7 @@ export function NoteCard({
       const result =
         await generateStudyNotes(content);
 
-      setStudyNotes(result);
+      setStudyNotes(result ?? "");
     } finally {
       setLoadingAction(null);
     }
