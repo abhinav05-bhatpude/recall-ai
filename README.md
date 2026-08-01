@@ -288,16 +288,18 @@ The project demonstrates production-ready full-stack development using modern te
 
 # 📚 What I Learned
 
-- Next.js App Router
-- TypeScript
-- Prisma ORM
-- PostgreSQL
-- Auth.js
-- Gemini AI Integration
-- Server Actions
-- Full-Stack Development
+Throughout this project, I gained practical experience with:
 
-> RecallAI is continuously evolving with new AI-powered productivity features.
+- Next.js App Router architecture
+- TypeScript for scalable development
+- Prisma ORM and PostgreSQL integration
+- Authentication using Auth.js
+- Server Actions in Next.js
+- RESTful application design
+- Google Gemini AI integration
+- Building production-style full-stack applications
+- Organizing scalable project structures
+- Deploying applications to Vercel
 
 # 🚀 Project Status
 
