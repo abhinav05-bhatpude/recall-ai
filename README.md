@@ -10,15 +10,18 @@
 ![Gemini AI](https://img.shields.io/badge/Gemini_AI-4285F4?style=for-the-badge&logo=google)
 ![Auth.js](https://img.shields.io/badge/Auth.js-000000?style=for-the-badge)
 
----
-
 # 📖 Overview
 
-RecallAI is an AI-powered Personal Knowledge Management platform that helps users organize notes, folders, and learning resources while leveraging AI to generate summaries, key points, and study notes.
+RecallAI is an AI-powered Personal Knowledge Management (PKM) platform designed to help users organize knowledge, manage notes, and accelerate learning with artificial intelligence.
 
-It demonstrates modern full-stack development using Next.js, Prisma, PostgreSQL, Auth.js, and Google's Gemini AI.
+The platform combines modern full-stack technologies with Google's Gemini AI to generate intelligent summaries, extract key insights, and create structured study notes from user content. It also provides folder organization, resource management, and secure authentication in a clean, responsive interface.
 
----
+### Project Goals
+
+- Organize notes and learning resources efficiently
+- Improve knowledge retention using AI-generated summaries
+- Demonstrate modern full-stack application architecture
+- Practice authentication, database design, and AI integration
 
 # ✨ Features
 
