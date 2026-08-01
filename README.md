@@ -25,44 +25,38 @@ The platform combines modern full-stack technologies with Google's Gemini AI to 
 
 # ✨ Features
 
-## 🤖 AI
+## 🤖 AI Features
 
-- AI Note Summarization
-- AI Key Points
-- AI Study Notes
+- Generate AI-powered note summaries
+- Extract key concepts automatically
+- Create structured study notes for revision
 
-## 📝 Notes
+## 📝 Note Management
 
-- Create Notes
-- Edit Notes
-- Delete Notes
-- Search Notes
-
-## 📁 Folders
-
-- Create Folders
-- Delete Folders
-- Organize Notes
+- Create, edit, and delete notes
+- Organize notes into folders
+- Search notes instantly
 
 ## 📚 Knowledge Hub
 
-- Save Websites
-- Save GitHub Repositories
-- Save PDFs
-- Save YouTube Videos
+Manage multiple learning resources including:
+
+- Websites
+- GitHub repositories
+- PDF documents
+- YouTube videos
 
 ## 📊 Dashboard
 
-- Notes Statistics
-- Folder Statistics
-- Resource Statistics
+- View note statistics
+- Monitor folder organization
+- Track saved learning resources
 
 ## 🔐 Authentication
 
-- Google Sign-In
-- Protected Routes
-
----
+- Secure Google Sign-In
+- Protected application routes
+- Session management with Auth.js
 
 # 🛠 Tech Stack
 
