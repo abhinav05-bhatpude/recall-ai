@@ -259,32 +259,26 @@ The project demonstrates production-ready full-stack development using modern te
 
 ---
 
-# 🗺️ Roadmap
+# 🗺️ Future Roadmap
 
-### ✅ Current
-
-- AI Note Summaries
-- AI Key Points
-- AI Study Notes
-- Notes & Folder Management
-- Knowledge Hub
-- Dashboard
-- Google Authentication
-
----
-
-### 🚀 Upcoming
-
+## Phase 1
 - Rich Text Editor
 - Note Tags
-- Favorites
-- PDF Upload
-- AI Flashcards
-- AI Chat
-- Semantic Search
-- Dark Mode Improvements
+- Favorites System
+- Improved Dashboard Analytics
 
----
+## Phase 2
+- PDF Upload Support
+- AI Flashcards
+- AI Chat Assistant
+- Semantic Search
+
+## Phase 3
+- Team Collaboration
+- Shared Workspaces
+- Mobile Responsive Improvements
+- Offline Support
+- Advanced AI Workflows
 
 # 📚 What I Learned
 
