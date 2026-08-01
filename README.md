@@ -148,28 +148,42 @@ npm run build
 ```bash
 npm start
 ```
-
----
-
-# 🏗 Architecture
+# 🏗️ System Architecture
 
 ```text
 User
  │
  ▼
-Next.js
+Auth.js Authentication
  │
- ├── Authentication
+ ▼
+Next.js Application
+ │
  ├── Dashboard
- ├── Notes
- ├── Folders
+ ├── Notes Module
+ ├── Folder Management
  ├── Knowledge Hub
- └── AI Services
-         │
-         ▼
- PostgreSQL
+ ├── AI Services
+ │
+ ▼
+Prisma ORM
+ │
+ ▼
+PostgreSQL Database
+ │
+ ▼
+Google Gemini AI
 ```
----
+
+### Architecture Highlights
+
+- Server-side rendering with Next.js
+- Secure authentication using Auth.js
+- Prisma ORM for database management
+- PostgreSQL as the primary database
+- Gemini AI integration for intelligent note processing
+
+
 
 # 🤖 AI Features
 
