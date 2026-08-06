@@ -96,6 +96,18 @@ Manage multiple learning resources including:
 
 ---
 
+# 📂 Project Structure
+
+```text
+src/
+ ├── app/
+ ├── actions/
+ ├── components/
+ ├── lib/
+ ├── prisma/
+ └── auth.ts
+```
+
 # 🚀 Getting Started
 
 ## Clone Repository
