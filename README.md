@@ -1,6 +1,10 @@
 # 🧠 RecallAI
 
 > An AI-powered Personal Knowledge Management Platform built with Next.js, TypeScript, Prisma, PostgreSQL, and Gemini AI.
+>
+> ## 🌐 Live Demo
+
+https://recall-ai-orcin.vercel.app/
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
